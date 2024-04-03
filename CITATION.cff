@@ -1,0 +1,18 @@
+# YAML 1.2
+---
+cff-version: "1.2.0"
+title: "mixed_meal_model_sbml"
+authors:
+  -
+    family-names: Baccinelli
+    given-names: Walter
+    orcid: "https://orcid.org/0000-0001-8888-4792"
+date-released: 20??-MM-DD
+doi: <insert your DOI here>
+version: "0.0.1"
+repository-code: "https://github.com/Computational-Biology-TUe/mixed_meal_model_sbml"
+keywords:
+  - digital twin
+  - metabolomic model
+message: "If you use this software, please cite it using these metadata."
+license: Apache-2.0
