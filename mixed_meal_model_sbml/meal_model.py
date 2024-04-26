@@ -80,7 +80,7 @@ _m.species = [
     Species("g_plasma", plasma, 0.0, name="g_plasma", annotations=annotations.species["glc"]),  # du[2] [unit=u"mmolGlucose/l"],
     Species("g_integral", plasma, 0.0, name="g_integral", annotations=annotations.species["glc"]),  # du[3]  G_int(t), [unit=u"(mmolGlucose*min)/l"],
 
-    Species("i_plasma", plasma, 0.0, name="i_plasma", annotations=annotations.species["ins"]),  # du[4] I_plasma(t), [unit=u"μIU/ml"],
+    Species("I_PL", plasma, 0.0, name="i_plasma", annotations=annotations.species["ins"]),  # du[4] I_plasma(t), [unit=u"μIU/ml"],
     Species("i_delay1", plasma, 0.0, name="i_delay1", annotations=annotations.species["ins"]),  # du[6]  I_delay_1(t), [unit=u"μIU/ml"],
     Species("i_delay2", plasma, 0.0, name="i_delay2", annotations=annotations.species["ins"]),  # du[7]  I_delay_2(t), [unit=u"μIU/ml"],
     Species("i_delay3", plasma, 0.0, name="i_delay3", annotations=annotations.species["ins"]),  # du[8]  I_delay_3(t), [unit=u"μIU/ml"],
@@ -103,7 +103,7 @@ _m.parameters = [
     Parameter("f_I", 1.0, name="f_I", sboTerm=SBO.SBO_0000002, unit=U.to_mmole_per_l), #convert insulin from uIU/ml to mmol/l unit=U.to_mmole_per_l
     Parameter("tau_i", 31.0, name="tau_i", sboTerm=SBO.SBO_0000002, unit=U.min),
     Parameter("tau_d", 3.0, name="tau_d", sboTerm=SBO.SBO_0000002, unit=U.min),
-    Parameter("G_threshold_pl", 9.0, name="G_threshold_pl", sboTerm=SBO.SBO_0000002, unit=U.dimensionless),
+    Parameter("G_th_PL", 9.0, name="G_th_PL", sboTerm=SBO.SBO_0000002, unit=U.dimensionless),
     Parameter("c1", 0.1, name="c1", sboTerm=SBO.SBO_0000002, unit=U.dimensionless),
     Parameter("V_G", 0.24285714285714285, name="V_G", sboTerm=SBO.SBO_0000002, unit=U.dimensionless), # TODO: change unit # [L/kg] volume of distribution for glucose
     Parameter("V_TG", 0.06, name="V_TG", sboTerm=SBO.SBO_0000002, unit=U.dimensionless),  # TODO: change unit # [L/kg]  volume of distribution of triglycerides (volume of blood)
@@ -122,7 +122,7 @@ _m.parameters = [
     Parameter("k9", 3.83e-2, name="K9", sboTerm=SBO.SBO_0000002, unit=U.per_min),  # k9 rate constant for outflow of insulin from plasma to interstitial space [/min],
     Parameter("k10", 2.84e-1, name="K10", sboTerm=SBO.SBO_0000002, unit=U.per_min),  # k10 rate constant for degredation of insulin in remote compartment [/min],
     Parameter("sigma", 1.4, name="sigma", sboTerm=SBO.SBO_0000002, unit=U.dimensionless),  # sigma shape factor (appearance of meal)
-    Parameter("Km", 13.2, name="Km", sboTerm=SBO.SBO_0000002, unit=U.mmole_glucose_per_l),  # Km michaelis-menten coefficient for glucose uptake [mmolGlucose/l],
+    Parameter("KM", 13.2, name="KM", sboTerm=SBO.SBO_0000002, unit=U.mmole_glucose_per_l),  # KM michaelis-menten coefficient for glucose uptake [mmolGlucose/l],
     Parameter("G_b", 5.0, name="G_b", sboTerm=SBO.SBO_0000002, unit=U.mmole_glucose_per_l),  # G_b basal plasma glucose [mmolGlucose/l]
     Parameter("I_PL_b", 18, name="I_PL_b", sboTerm=SBO.SBO_0000002, unit=U.mmole_glucose_per_l), # I_PL_b basal plasma glucose [μIU/ml]
     Parameter("G_liv_b", 0.043, name="I_pl_b", sboTerm=SBO.SBO_0000002, unit=U.mmole_glucose_per_l_min),  # basal hepatic glucose release [mmolGlucose/(l*min)]
@@ -141,24 +141,44 @@ _m.parameters = [
 
     # input parameters (for now, test values)
     # TODO: verify where M_G_gut comes from
-    Parameter("M_G_gut", 0, name="M_G_gut", unit=U.mg),  # test value, intial mass of glucose in digestive tract
+    Parameter("M_G_gut", 0, name="M_G_gut", unit=U.mg, constant=False),  # test value, intial mass of glucose in digestive tract
     Parameter("D_meal_G", 75000, name="D_meal_G", unit=U.mg),  # test value, meal glucose mass
-    Parameter("G_PL", 5, name="G_PL", unit=U.mg),  # test value, fasting glucose
-    Parameter("I_d1", 0, name="I_d1"),  # test value, insulin concentrtion in remote compartment
+    Parameter("D_meal_TG", 60000, name="D_meal_G", unit=U.mg),  # test value, total amount of lipid ingested (mg)
+    Parameter("G_PL", 5, name="G_PL", unit=U.mg, constant=False),  # test value, fasting glucose
+    Parameter("I_d1", 0, name="I_d1", constant=False),  # test value, insulin concentrtion in remote compartment
     Parameter("BW", 75, name="BW"),  # test value, kg subject_body_mass
+    Parameter("I_PL_0", 0.0, name="i_plasma", annotations=annotations.species["ins"]), # fasting insulin concentration THIS IS THE INITIAL VALUE OF I_PL
+
+    Parameter("I_d2", 0.0, name="I_d2", constant=False),  # delayed insulin (LPL compartment1) in Matlab the initial value is set to I_PL_0
+    Parameter("I_d3", 0.0, name="I_d3", constant=False),  # delayed insulin (LPL compartment2) in Matlab the initial value is set to I_PL_0
+    Parameter("I_d4", 0.0, name="I_d4", constant=False),  # delayed insulin (LPL compartment3) in Matlab the initial value is set to I_PL_0
+    Parameter("NEFA_PL", 0.33, name="fasting plasma NEFA concentration", constant=False), # plasma NEFA concentration (mmol/l)
+
+    Parameter("M_TG_gut_1", 0, name="initial maas of triglyceride in the digestive tract", unit=U.mg, constant=False),  # triglyceride mass in gut compartment 1 (mg)
+    Parameter("M_TG_gut_2", 0, name="initial maas of triglyceride in the digestive tract/lymphatic system", unit=U.mg, constant=False),  # triglyceride mass in gut compartment 2 (mg)
+    Parameter("M_TG_gut_3", 0, name="initial maas of triglyceride in the lymphatic system", unit=U.mg, constant=False),  # triglyceride mass in gut compartment 3 (mg)
+    Parameter("TG_PL", 1.3, name="initial maas of triglyceride in the lymphatic system", unit=U.mg, constant=False),  # plasma triglyceride concentration (mmol/l)
+
 
     # gut products. TODO: move to gut compartment, add unit and sboterm
     Parameter("g_gut", 0.0, name="g_gut", annotations=annotations.species["glc"], constant=False),  # du[1] [unit=u"mg"],
     Parameter("i_intestitial", 0.0, name="i_intestitial", annotations=annotations.species["ins"], constant=False),  # du[5] I_interstitial(t), [unit=u"μIU/ml"],
-    Parameter("tg_gut", 0.0, name="tg_gut", annotations=annotations.species["tg"], constant=False),  # du[10]  TG_gut(t), [unit=u"mg"],
+    Parameter("TG_gut", 0.0, name="TGgut", annotations=annotations.species["tg"], constant=False),  # du[10]  TG_gut(t), [unit=u"mg"],
     Parameter("tg_delay1", 0.0, name="tg_delay1", annotations=annotations.species["tg"], constant=False),  # du[11]
     Parameter("tg_delay2", 0.0, name="tg_delay2", annotations=annotations.species["tg"], constant=False),  # du[12]
+
+    # integral insulin
+    Parameter("I_pnc", 0.0, name="integral insulin", annotations=annotations.species["tg"], constant=False),
 ]
 
 # Assignment rules
 _m.rules = [
+    # custom functions
+    # return 1 if the first argument is bigger than the second, 0 otherwise
+    Function("G_thresholding", name="G tresholding",value="lambda(x,y, piecewise(1,gt(x,y),0))"),
+
     # TODO: which sboTerm?
-    AssignmentRule("c2", name="c2", value="G_liv_b*(Km + G_b)/G_b-k5*f_I*G_liv_b"),  # c.c2 = c.G_liv_b.*(parameters(12) + parameters(13))./parameters(13) - parameters(5).*c.f_I.*parameters(15);
+    AssignmentRule("c2", name="c2", value="G_liv_b*(KM + G_b)/G_b-k5*f_I*G_liv_b"),  # c.c2 = c.G_liv_b.*(parameters(12) + parameters(13))./parameters(13) - parameters(5).*c.f_I.*parameters(15);
     AssignmentRule("c3", name="c3", value="k7*G_b/(f_I*tau_i*I_PL_b)*t_integralwindow"),  # c.c3 = parameters(7).*parameters(13)./(c.f_I*c.tau_i.*parameters(14)).*c.t_integralwindow;
 
     #  Appearance of glucose from meal
@@ -166,12 +186,82 @@ _m.rules = [
 
     # NOTE: M_G_gut is returned in the original model, but needs to be a species for simulating this. But it is in the gut compartment.
     # to be tackled when adding the gut compartment
-    # AssignmentRule("M_G_gut", name="M_G_gut", value="G_meal - k2*M_G_gut"), # glucose mass in gut
+    RateRule("M_G_gut", name="glucose mass in gut", value="G_meal - k2*M_G_gut"),
 
     # plasma glucose
     AssignmentRule("G_liv", name="G_liv", value="G_liv_b - k4*f_I*I_d1 - k3*(G_PL-G_b)"),  # net glucose flux across liver
     AssignmentRule("G_gut", name="G_gut", value="k2*(f_G/(V_G*BW))*M_G_gut"),  # glucose concentration in gut
 
+    # insulin independent glucose utilisation (brain, erythrocytes ect.)
+    AssignmentRule("U_ii", name="U_ii", value="G_liv_b*((KM + G_b)/G_b)*(G_PL/(KM + G_PL))"),
+
+    # insulin dependent glucose utilisation (liver,muscle,adipose)
+    AssignmentRule("U_id", name="U_id", value="k5*f_I*I_d1*(G_PL/(KM + G_PL))"),
+
+    # renal extraction of plasma glucose
+
+    AssignmentRule("U_ren", name="U_ren", value="(c1/(V_G*BW)*(G_PL - G_th_PL))*G_thresholding(G_PL,G_th_PL)"),
+
+    # rate of change of plasma glucose
+    # AssignmentRule("G_PL_out", name="G_PL_out", value="G_liv + G_gut - U_ii - U_id - U_ren"),
+    RateRule("G_PL", name="rate of change of plasma glucose", value="G_liv + G_gut - U_ii - U_id - U_ren"),
+
+    # integration of G_pl-G_b over the interval t_int to t.
+    # RateRule("G_int", name="integration of G_pl-G_b", value="G_PL-G_b"),
+
+    # production/release of insulin by pancreas
+    RateRule("I_pnc", name="production/release of insulin by pancreas",
+             value="(f_I^-1)*(k6*(G_PL - G_b) + (k7/tau_i)*(G_PL-G_b) + (k7/tau_i)*G_b + (k8*tau_d)*G_PL)"),
+
+    # insulin  liver
+    AssignmentRule("I_liv", name="insulin  liver", value="k7*(G_b/(f_I*tau_i*I_PL_b))*I_PL"),
+
+    # insulin concentration in remote compartment
+    RateRule("I_d1", name="insulin concentration in remote compartment", value="k9*(I_PL -I_PL_b) - k10*I_d1"),
+
+    # transport of insulin from plasma to remote compartment
+    AssignmentRule("i_rem", name="insulin from plasma to remote compartment", value="k9*(I_PL - I_PL_b)"),
+
+    # rate of change of plasma insulin
+    RateRule("I_PL", name="change of plasma insulin", value="I_pnc - I_liv - i_rem"),
+
+    ## insulin delays for NEFA
+
+    RateRule("I_d2", name="I_d2", value="(3/tau_LPL)*(I_PL - I_d2)"),
+    RateRule("I_d3", name="I_d3", value="(3/tau_LPL)*(I_d2 - I_d3)"),
+    RateRule("I_d4", name="I_d4", value="(3/tau_LPL)*(I_d3 - I_d4)"),
+
+    ## appearance of triglyceride from meal
+
+    # triglyceride appearance from meal
+    AssignmentRule("TG_meal", name="triglyceride appearance from meal", value="sigma*(k13^sigma)*time^(sigma-1)*exp(-(k13*(time))^sigma)*D_meal_TG"),
+
+    # triglyceride mass in gut
+    RateRule("M_TG_gut_1", name="M_TG_gut_1", value="TG_meal - k14*M_TG_gut_1"),
+    RateRule("M_TG_gut_2", name="M_TG_gut_2", value="k14*M_TG_gut_1 - k14*M_TG_gut_2"),
+    RateRule("M_TG_gut_3", name="M_TG_gut_3", value="k14*M_TG_gut_2 - k14*M_TG_gut_3"),
+
+    ## plasma triglyceride equations
+
+    # triglyceride appearance from meal (chylomicron)
+    AssignmentRule("TG_gut", name="triglyceride appearance from meal (chylomicron)", value="k14*(f_TG/(V_TG*BW))*M_TG_gut_3"),
+
+    # uptake of circulating triglyceride into tissues via LPL lipolysis
+    AssignmentRule("LPL", name="uptake of circulating triglyceride into tissues via LPL lipolysis", value="k11*TG_PL*I_d4"),
+
+    # secretion of endogenous triglyceride from the liver (VLDL)
+    AssignmentRule("VLDL", name="secretion of endogenous triglyceride from the liver (VLDL)", value="k16-k15*(I_d4-I_PL_b)"),
+
+    #rate of change of plasma triglyceride
+    RateRule("TG_PL", name="rate of change of plasma triglyceride", value="VLDL + TG_gut - LPL"),
+
+    ## NEFA equation
+
+    # fractional spill-over
+    AssignmentRule("frac_spill", name="fractional spill-over", value="(1/100)*(spill*(I_PL_b/I_d2))"),
+
+    # plasma NEFA
+    # RateRule("NEFA_PL", name="plasma NEFA", value="3*frac_spill*LPL + ATL_max/(1+K_ATL*(I_d2)^2) - k12*NEFA_PL"),
 ]
 
 # k1     = parameters(1);  % rate constant for glucose stomach emptying (fast)[1/min]
@@ -406,7 +496,7 @@ meal_model = _m
 def simulate(sbml_path: Path):
     import pandas as pd
     r: roadrunner.RoadRunner = roadrunner.RoadRunner(str(sbml_path))
-    _s = r.simulate(start=0, end=10, steps=1000)
+    _s = r.simulate(start=500, end=1000, steps=500)
     r.plot(_s)
     s_out = pd.DataFrame(_s, columns=_s.colnames)
     print(s_out)
