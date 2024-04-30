@@ -81,13 +81,25 @@ _m.species = [
     Species("g_integral", plasma, 0.0, name="g_integral", annotations=annotations.species["glc"]),  # du[3]  G_int(t), [unit=u"(mmolGlucose*min)/l"],
 
     Species("I_PL", plasma, 0.0, name="i_plasma", annotations=annotations.species["ins"]),  # du[4] I_plasma(t), [unit=u"μIU/ml"],
-    Species("i_delay1", plasma, 0.0, name="i_delay1", annotations=annotations.species["ins"]),  # du[6]  I_delay_1(t), [unit=u"μIU/ml"],
-    Species("i_delay2", plasma, 0.0, name="i_delay2", annotations=annotations.species["ins"]),  # du[7]  I_delay_2(t), [unit=u"μIU/ml"],
-    Species("i_delay3", plasma, 0.0, name="i_delay3", annotations=annotations.species["ins"]),  # du[8]  I_delay_3(t), [unit=u"μIU/ml"],
+    # Species("i_delay1", plasma, 0.0, name="i_delay1", annotations=annotations.species["ins"]),  # du[6]  I_delay_1(t), [unit=u"μIU/ml"],
+    # Species("i_delay2", plasma, 0.0, name="i_delay2", annotations=annotations.species["ins"]),  # du[7]  I_delay_2(t), [unit=u"μIU/ml"],
+    # Species("i_delay3", plasma, 0.0, name="i_delay3", annotations=annotations.species["ins"]),  # du[8]  I_delay_3(t), [unit=u"μIU/ml"],
 
-    Species("nefa_plasma", plasma, 0.0, name="nefa_plasma", annotations=annotations.species["nefa"]),  # du[9] NEFA_plasma(t), [unit=u"mmolNEFA/l"],
+    # Species("nefa_plasma", plasma, 0.0, name="nefa_plasma", annotations=annotations.species["nefa"]),  # du[9] NEFA_plasma(t), [unit=u"mmolNEFA/l"],
+    Species("G_PL", plasma, 5, name="G_PL"),  # test value, fasting glucose
 
     Species("tg_plasma", plasma, 0.0, name="tg_plasma", annotations=annotations.species["tg"]),  # du[13] TG_plasma(t), [unit=u"mmolTG/l"]
+
+    Species("I_d1", plasma, 0, name="I_d1"),
+    # test value, insulin concentrtion in remote compartment
+
+    Species("I_d2", plasma, 0.0, name="I_d2"),  # delayed insulin (LPL compartment1) in Matlab the initial value is set to I_PL_0
+    Species("I_d3", plasma, 0.0, name="I_d3"),  # delayed insulin (LPL compartment2) in Matlab the initial value is set to I_PL_0
+    Species("I_d4", plasma, 0.0, name="I_d4"),  # delayed insulin (LPL compartment3) in Matlab the initial value is set to I_PL_0
+    Species("NEFA_PL", plasma, 0.33, name="fasting plasma NEFA concentration"), # plasma NEFA concentration (mmol/l)
+    Species("TG_PL", plasma, 1.3, name="initial maas of triglyceride in the lymphatic system"),  # plasma triglyceride concentration (mmol/l)
+    # integral insulin
+    Species("I_pnc", plasma, 0.0, name="integral insulin", annotations=annotations.species["tg"]),
 ]
 
 for s in _m.species:
@@ -144,20 +156,20 @@ _m.parameters = [
     Parameter("M_G_gut", 0, name="M_G_gut", unit=U.mg, constant=False),  # test value, intial mass of glucose in digestive tract
     Parameter("D_meal_G", 75000, name="D_meal_G", unit=U.mg),  # test value, meal glucose mass
     Parameter("D_meal_TG", 60000, name="D_meal_G", unit=U.mg),  # test value, total amount of lipid ingested (mg)
-    Parameter("G_PL", 5, name="G_PL", unit=U.mg, constant=False),  # test value, fasting glucose
-    Parameter("I_d1", 0, name="I_d1", constant=False),  # test value, insulin concentrtion in remote compartment
+    # Parameter("G_PL", 5, name="G_PL", unit=U.mg, constant=False),  # test value, fasting glucose
+    # Parameter("I_d1", 0, name="I_d1", constant=False),  # test value, insulin concentrtion in remote compartment
     Parameter("BW", 75, name="BW"),  # test value, kg subject_body_mass
     Parameter("I_PL_0", 0.0, name="i_plasma", annotations=annotations.species["ins"]), # fasting insulin concentration THIS IS THE INITIAL VALUE OF I_PL
 
-    Parameter("I_d2", 0.0, name="I_d2", constant=False),  # delayed insulin (LPL compartment1) in Matlab the initial value is set to I_PL_0
-    Parameter("I_d3", 0.0, name="I_d3", constant=False),  # delayed insulin (LPL compartment2) in Matlab the initial value is set to I_PL_0
-    Parameter("I_d4", 0.0, name="I_d4", constant=False),  # delayed insulin (LPL compartment3) in Matlab the initial value is set to I_PL_0
-    Parameter("NEFA_PL", 0.33, name="fasting plasma NEFA concentration", constant=False), # plasma NEFA concentration (mmol/l)
+    # Parameter("I_d2", 0.0, name="I_d2", constant=False),  # delayed insulin (LPL compartment1) in Matlab the initial value is set to I_PL_0
+    # Parameter("I_d3", 0.0, name="I_d3", constant=False),  # delayed insulin (LPL compartment2) in Matlab the initial value is set to I_PL_0
+    # Parameter("I_d4", 0.0, name="I_d4", constant=False),  # delayed insulin (LPL compartment3) in Matlab the initial value is set to I_PL_0
+    # Parameter("NEFA_PL", 0.33, name="fasting plasma NEFA concentration", constant=False), # plasma NEFA concentration (mmol/l)
 
     Parameter("M_TG_gut_1", 0, name="initial maas of triglyceride in the digestive tract", unit=U.mg, constant=False),  # triglyceride mass in gut compartment 1 (mg)
     Parameter("M_TG_gut_2", 0, name="initial maas of triglyceride in the digestive tract/lymphatic system", unit=U.mg, constant=False),  # triglyceride mass in gut compartment 2 (mg)
     Parameter("M_TG_gut_3", 0, name="initial maas of triglyceride in the lymphatic system", unit=U.mg, constant=False),  # triglyceride mass in gut compartment 3 (mg)
-    Parameter("TG_PL", 1.3, name="initial maas of triglyceride in the lymphatic system", unit=U.mg, constant=False),  # plasma triglyceride concentration (mmol/l)
+    # Parameter("TG_PL", 1.3, name="initial maas of triglyceride in the lymphatic system", unit=U.mg, constant=False),  # plasma triglyceride concentration (mmol/l)
 
 
     # gut products. TODO: move to gut compartment, add unit and sboterm
@@ -168,14 +180,14 @@ _m.parameters = [
     Parameter("tg_delay2", 0.0, name="tg_delay2", annotations=annotations.species["tg"], constant=False),  # du[12]
 
     # integral insulin
-    Parameter("I_pnc", 0.0, name="integral insulin", annotations=annotations.species["tg"], constant=False),
+    # Parameter("I_pnc", 0.0, name="integral insulin", annotations=annotations.species["tg"], constant=False),
 ]
 
 # Assignment rules
 _m.rules = [
     # custom functions
     # return 1 if the first argument is bigger than the second, 0 otherwise
-    Function("G_thresholding", name="G tresholding",value="lambda(x,y, piecewise(1,gt(x,y),0))"),
+    Function("G_thresholding", name="G tresholding", value="lambda(x,y, piecewise(1,gt(x,y),0))"),
 
     # TODO: which sboTerm?
     AssignmentRule("c2", name="c2", value="G_liv_b*(KM + G_b)/G_b-k5*f_I*G_liv_b"),  # c.c2 = c.G_liv_b.*(parameters(12) + parameters(13))./parameters(13) - parameters(5).*c.f_I.*parameters(15);
@@ -496,7 +508,7 @@ meal_model = _m
 def simulate(sbml_path: Path):
     import pandas as pd
     r: roadrunner.RoadRunner = roadrunner.RoadRunner(str(sbml_path))
-    _s = r.simulate(start=500, end=1000, steps=500)
+    _s = r.simulate(start=0, end=500, steps=500)
     r.plot(_s)
     s_out = pd.DataFrame(_s, columns=_s.colnames)
     print(s_out)
@@ -507,4 +519,4 @@ if __name__ == "__main__":
         filepath=MODEL_PATH, model=meal_model, validation_options=ValidationOptions(units_consistency=False, modeling_practice=False)
     )
     simulate(result.sbml_path)
-    visualize_sbml(sbml_path=result.sbml_path, delete_session=True)
+    # visualize_sbml(sbml_path=result.sbml_path, delete_session=True)
