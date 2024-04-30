@@ -70,7 +70,7 @@ FOR A PARTICULAR PURPOSE.</p></body>
       </rdf:RDF>
     </annotation>
     <listOfFunctionDefinitions>
-      <functionDefinition id="G_thresholding" name="G tresholding">
+      <functionDefinition id="thresholding" name="thresholding">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <lambda>
             <bvar>
@@ -392,10 +392,10 @@ FOR A PARTICULAR PURPOSE.</p></body>
       </species>
     </listOfSpecies>
     <listOfParameters>
-      <parameter metaid="meta_f_G" sboTerm="SBO:0000002" id="f_G" name="f_G" value="0.005551" units="mg_per_l" constant="true">
+      <parameter metaid="meta_fG" sboTerm="SBO:0000002" id="fG" name="f_G" value="0.005551" units="mg_per_l" constant="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
-            <rdf:Description rdf:about="#meta_f_G">
+            <rdf:Description rdf:about="#meta_fG">
               <bqbiol:is>
                 <rdf:Bag>
                   <rdf:li rdf:resource="http://identifiers.org/SBO:0000002"/>
@@ -405,10 +405,10 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </parameter>
-      <parameter metaid="meta_f_TG" sboTerm="SBO:0000002" id="f_TG" name="f_TG" value="0.00113" units="mmole_per_ml" constant="true">
+      <parameter metaid="meta_fTG" sboTerm="SBO:0000002" id="fTG" name="f_TG" value="0.00113" units="mmole_per_ml" constant="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
-            <rdf:Description rdf:about="#meta_f_TG">
+            <rdf:Description rdf:about="#meta_fTG">
               <bqbiol:is>
                 <rdf:Bag>
                   <rdf:li rdf:resource="http://identifiers.org/SBO:0000002"/>
@@ -418,10 +418,10 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </parameter>
-      <parameter metaid="meta_f_I" sboTerm="SBO:0000002" id="f_I" name="f_I" value="1" units="to_mmole_per_l" constant="true">
+      <parameter metaid="meta_fI" sboTerm="SBO:0000002" id="fI" name="f_I" value="1" units="to_mmole_per_l" constant="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
-            <rdf:Description rdf:about="#meta_f_I">
+            <rdf:Description rdf:about="#meta_fI">
               <bqbiol:is>
                 <rdf:Bag>
                   <rdf:li rdf:resource="http://identifiers.org/SBO:0000002"/>
@@ -457,10 +457,10 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </parameter>
-      <parameter metaid="meta_G_th_PL" sboTerm="SBO:0000002" id="G_th_PL" name="G_th_PL" value="9" units="dimensionless" constant="true">
+      <parameter metaid="meta_G_threshold_pl" sboTerm="SBO:0000002" id="G_threshold_pl" name="G_th_PL" value="9" units="dimensionless" constant="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
-            <rdf:Description rdf:about="#meta_G_th_PL">
+            <rdf:Description rdf:about="#meta_G_threshold_pl">
               <bqbiol:is>
                 <rdf:Bag>
                   <rdf:li rdf:resource="http://identifiers.org/SBO:0000002"/>
@@ -474,45 +474,6 @@ FOR A PARTICULAR PURPOSE.</p></body>
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_c1">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="http://identifiers.org/SBO:0000002"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
-          </rdf:RDF>
-        </annotation>
-      </parameter>
-      <parameter metaid="meta_V_G" sboTerm="SBO:0000002" id="V_G" name="V_G" value="0.242857142857143" units="dimensionless" constant="true">
-        <annotation>
-          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
-            <rdf:Description rdf:about="#meta_V_G">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="http://identifiers.org/SBO:0000002"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
-          </rdf:RDF>
-        </annotation>
-      </parameter>
-      <parameter metaid="meta_V_TG" sboTerm="SBO:0000002" id="V_TG" name="V_TG" value="0.06" units="dimensionless" constant="true">
-        <annotation>
-          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
-            <rdf:Description rdf:about="#meta_V_TG">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="http://identifiers.org/SBO:0000002"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
-          </rdf:RDF>
-        </annotation>
-      </parameter>
-      <parameter metaid="meta_t_integralwindow" sboTerm="SBO:0000002" id="t_integralwindow" name="t_integralwindow" value="30" units="dimensionless" constant="true">
-        <annotation>
-          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
-            <rdf:Description rdf:about="#meta_t_integralwindow">
               <bqbiol:is>
                 <rdf:Bag>
                   <rdf:li rdf:resource="http://identifiers.org/SBO:0000002"/>
@@ -665,10 +626,10 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </parameter>
-      <parameter metaid="meta_KM" sboTerm="SBO:0000002" id="KM" name="KM" value="13.2" units="mmole_glucose_per_l" constant="true">
+      <parameter metaid="meta_Km" sboTerm="SBO:0000002" id="Km" name="KM" value="13.2" units="mmole_glucose_per_l" constant="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
-            <rdf:Description rdf:about="#meta_KM">
+            <rdf:Description rdf:about="#meta_Km">
               <bqbiol:is>
                 <rdf:Bag>
                   <rdf:li rdf:resource="http://identifiers.org/SBO:0000002"/>
@@ -691,10 +652,10 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </parameter>
-      <parameter metaid="meta_I_PL_b" sboTerm="SBO:0000002" id="I_PL_b" name="I_PL_b" value="18" units="mmole_glucose_per_l" constant="true">
+      <parameter metaid="meta_I_pl_b" sboTerm="SBO:0000002" id="I_pl_b" name="I_PL_b" value="18" units="mmole_glucose_per_l" constant="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
-            <rdf:Description rdf:about="#meta_I_PL_b">
+            <rdf:Description rdf:about="#meta_I_pl_b">
               <bqbiol:is>
                 <rdf:Bag>
                   <rdf:li rdf:resource="http://identifiers.org/SBO:0000002"/>
@@ -847,36 +808,98 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </parameter>
-      <parameter id="M_G_gut" name="M_G_gut" value="0" units="mg" constant="false"/>
-      <parameter id="D_meal_G" name="D_meal_G" value="75000" units="mg" constant="true"/>
-      <parameter id="D_meal_TG" name="D_meal_G" value="60000" units="mg" constant="true"/>
-      <parameter id="G_PL" name="G_PL" value="5" units="mg" constant="false"/>
-      <parameter id="I_d1" name="I_d1" value="0" constant="false"/>
-      <parameter id="BW" name="BW" value="75" constant="true"/>
-      <parameter metaid="meta_I_PL_0" id="I_PL_0" name="i_plasma" value="0" constant="true">
+      <parameter metaid="meta_fasting_glucose" sboTerm="SBO:0000002" id="fasting_glucose" name="fasting_glucose" value="5" constant="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
-            <rdf:Description rdf:about="#meta_I_PL_0">
+            <rdf:Description rdf:about="#meta_fasting_glucose">
               <bqbiol:is>
                 <rdf:Bag>
-                  <rdf:li rdf:resource="http://identifiers.org/CHEBI:6904"/>
-                  <rdf:li rdf:resource="http://identifiers.org/ncit/C61845"/>
-                  <rdf:li rdf:resource="http://identifiers.org/inchikey/IUBSYMUCCVWXPE-UHFFFAOYSA-N"/>
+                  <rdf:li rdf:resource="http://identifiers.org/SBO:0000002"/>
                 </rdf:Bag>
               </bqbiol:is>
             </rdf:Description>
           </rdf:RDF>
         </annotation>
       </parameter>
-      <parameter id="I_d2" name="I_d2" value="0" constant="false"/>
-      <parameter id="I_d3" name="I_d3" value="0" constant="false"/>
-      <parameter id="I_d4" name="I_d4" value="0" constant="false"/>
-      <parameter id="NEFA_PL" name="fasting plasma NEFA concentration" value="0.33" constant="false"/>
-      <parameter id="M_TG_gut_1" name="initial maas of triglyceride in the digestive tract" value="0" units="mg" constant="false"/>
-      <parameter id="M_TG_gut_2" name="initial maas of triglyceride in the digestive tract/lymphatic system" value="0" units="mg" constant="false"/>
-      <parameter id="M_TG_gut_3" name="initial maas of triglyceride in the lymphatic system" value="0" units="mg" constant="false"/>
-      <parameter id="TG_PL" name="initial maas of triglyceride in the lymphatic system" value="1.3" units="mg" constant="false"/>
-      <parameter metaid="meta_g_gut" id="g_gut" name="g_gut" value="0" constant="false">
+      <parameter metaid="meta_fasting_insulin" sboTerm="SBO:0000002" id="fasting_insulin" name="fasting_insulin" value="18" constant="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_fasting_insulin">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/SBO:0000002"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </parameter>
+      <parameter metaid="meta_fasting_TG" sboTerm="SBO:0000002" id="fasting_TG" name="fasting_TG" value="1.3" constant="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_fasting_TG">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/SBO:0000002"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </parameter>
+      <parameter metaid="meta_fasting_NEFA" sboTerm="SBO:0000002" id="fasting_NEFA" name="fasting_NEFA" value="0.33" constant="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_fasting_NEFA">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/SBO:0000002"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </parameter>
+      <parameter metaid="meta_mG" sboTerm="SBO:0000002" id="mG" name="meals_glucose_mass" value="75000" constant="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_mG">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/SBO:0000002"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </parameter>
+      <parameter metaid="meta_mTG" sboTerm="SBO:0000002" id="mTG" name="meals_tg_mass" value="60000" constant="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_mTG">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/SBO:0000002"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </parameter>
+      <parameter metaid="meta_BW" sboTerm="SBO:0000002" id="BW" name="subject_body_mass" value="84.2" constant="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_BW">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/SBO:0000002"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </parameter>
+      <parameter metaid="meta_g_gut" id="g_gut" value="0" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_g_gut">
@@ -891,7 +914,7 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </parameter>
-      <parameter metaid="meta_i_intestitial" id="i_intestitial" name="i_intestitial" value="0" constant="false">
+      <parameter metaid="meta_i_intestitial" id="i_intestitial" value="0" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_i_intestitial">
@@ -906,10 +929,10 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </parameter>
-      <parameter metaid="meta_TG_gut" id="TG_gut" name="TGgut" value="0" constant="false">
+      <parameter metaid="meta_tg_gut" id="tg_gut" name="tg_gut" value="0" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
-            <rdf:Description rdf:about="#meta_TG_gut">
+            <rdf:Description rdf:about="#meta_tg_gut">
               <bqbiol:is>
                 <rdf:Bag>
                   <rdf:li rdf:resource="http://identifiers.org/CHEBI:6904"/>
@@ -951,82 +974,161 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </parameter>
-      <parameter metaid="meta_I_pnc" id="I_pnc" name="integral insulin" value="0" constant="false">
-        <annotation>
-          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
-            <rdf:Description rdf:about="#meta_I_pnc">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="http://identifiers.org/CHEBI:6904"/>
-                  <rdf:li rdf:resource="http://identifiers.org/ncit/C61845"/>
-                  <rdf:li rdf:resource="http://identifiers.org/inchikey/IUBSYMUCCVWXPE-UHFFFAOYSA-N"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
-          </rdf:RDF>
-        </annotation>
-      </parameter>
-      <parameter id="c2" name="c2" value="NaN" units="dimensionless" constant="false"/>
-      <parameter id="c3" name="c3" value="NaN" units="dimensionless" constant="false"/>
-      <parameter id="G_meal" name="G_meal" value="NaN" units="dimensionless" constant="false"/>
-      <parameter id="G_liv" name="G_liv" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="VG" name="VG" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="VTG" name="VTG" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="G_meal" name="glucose_from_meal" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="intestinal_absorption" name="intestinal_absorption" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="distribution_volume_correction" name="distribution_volume_correction" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="unit_conversion_glucose_insulin" name="unit_conversion_glucose_insulin" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="egp_inhibition_by_insulin" name="egp_inhibition_by_insulin" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="egp_inhibition_by_glucose" name="egp_inhibition_by_glucose" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="G_liver" name="G_liver" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="glucose_appearance" name="glucose_appearance" value="NaN" units="dimensionless" constant="false"/>
       <parameter id="G_gut" name="G_gut" value="NaN" units="dimensionless" constant="false"/>
-      <parameter id="U_ii" name="U_ii" value="NaN" units="dimensionless" constant="false"/>
-      <parameter id="U_id" name="U_id" value="NaN" units="dimensionless" constant="false"/>
-      <parameter id="U_ren" name="U_ren" value="NaN" units="dimensionless" constant="false"/>
-      <parameter id="I_liv" name="insulin  liver" value="NaN" units="dimensionless" constant="false"/>
-      <parameter id="i_rem" name="insulin from plasma to remote compartment" value="NaN" units="dimensionless" constant="false"/>
-      <parameter id="TG_meal" name="triglyceride appearance from meal" value="NaN" units="dimensionless" constant="false"/>
-      <parameter id="LPL" name="uptake of circulating triglyceride into tissues via LPL lipolysis" value="NaN" units="dimensionless" constant="false"/>
-      <parameter id="VLDL" name="secretion of endogenous triglyceride from the liver (VLDL)" value="NaN" units="dimensionless" constant="false"/>
-      <parameter id="frac_spill" name="fractional spill-over" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="normalized_utilization_rate" name="normalized_utilization_rate" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="G_iid" name="Insulin-independent glucose utilization" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="utilization_rate" name="utilization_rate" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="G_idp" name="G_idp" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="G_ren" name="G_ren" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="I_proportional" name="I_proportional" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="I_integral" name="I_integral" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="I_derivative" name="I_derivative" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="I_pnc" name="I_pnc" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="basal_rate" name="I_pnc" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="I_liv" name="I_liv" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="I_int" name="I_int" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="appearance" name="Insulin appearance" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="degradation" name="Insulin degradation" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="LPL_lipolysis" name="LPL_lipolysis" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="fractional_spillover" name="fractional_spillover" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="spillover" name="spillover" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="adipose_tg_lipolysis" name="adipose_tg_lipolysis" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="tissue_uptake" name="tissue_uptake" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="distribution_volume_correction_tg" name="distribution_volume_correction_tg" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="VLDL" name="endogenous secretion of TG" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="TG_gut" name="TG from the gut" value="NaN" units="dimensionless" constant="false"/>
     </listOfParameters>
+    <listOfInitialAssignments>
+      <initialAssignment symbol="G_b">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> fasting_glucose </ci>
+        </math>
+      </initialAssignment>
+      <initialAssignment symbol="I_pl_b">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> fasting_insulin </ci>
+        </math>
+      </initialAssignment>
+      <initialAssignment symbol="g_gut">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <cn type="integer"> 0 </cn>
+        </math>
+      </initialAssignment>
+      <initialAssignment symbol="g_plasma">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> fasting_glucose </ci>
+        </math>
+      </initialAssignment>
+      <initialAssignment symbol="g_integral">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <cn type="integer"> 0 </cn>
+        </math>
+      </initialAssignment>
+      <initialAssignment symbol="I_PL">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> fasting_insulin </ci>
+        </math>
+      </initialAssignment>
+      <initialAssignment symbol="i_intestitial">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <cn type="integer"> 0 </cn>
+        </math>
+      </initialAssignment>
+      <initialAssignment symbol="i_delay1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> fasting_insulin </ci>
+        </math>
+      </initialAssignment>
+      <initialAssignment symbol="i_delay2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> fasting_insulin </ci>
+        </math>
+      </initialAssignment>
+      <initialAssignment symbol="i_delay3">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> fasting_insulin </ci>
+        </math>
+      </initialAssignment>
+      <initialAssignment symbol="nefa_plasma">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> fasting_NEFA </ci>
+        </math>
+      </initialAssignment>
+      <initialAssignment symbol="tg_gut">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <cn type="integer"> 0 </cn>
+        </math>
+      </initialAssignment>
+      <initialAssignment symbol="tg_delay1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <cn type="integer"> 0 </cn>
+        </math>
+      </initialAssignment>
+      <initialAssignment symbol="tg_delay2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <cn type="integer"> 0 </cn>
+        </math>
+      </initialAssignment>
+      <initialAssignment symbol="tg_plasma">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> fasting_TG </ci>
+        </math>
+      </initialAssignment>
+    </listOfInitialAssignments>
     <listOfRules>
-      <assignmentRule variable="c2">
+      <assignmentRule variable="VG">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
-            <minus/>
+            <divide/>
             <apply>
               <divide/>
+              <cn type="integer"> 260 </cn>
               <apply>
-                <times/>
-                <ci> G_liv_b </ci>
+                <root/>
+                <degree>
+                  <cn type="integer"> 2 </cn>
+                </degree>
                 <apply>
-                  <plus/>
-                  <ci> KM </ci>
-                  <ci> G_b </ci>
+                  <divide/>
+                  <ci> BW </ci>
+                  <cn type="integer"> 70 </cn>
                 </apply>
               </apply>
-              <ci> G_b </ci>
             </apply>
-            <apply>
-              <times/>
-              <ci> k5 </ci>
-              <ci> f_I </ci>
-              <ci> G_liv_b </ci>
-            </apply>
+            <cn type="integer"> 1000 </cn>
           </apply>
         </math>
       </assignmentRule>
-      <assignmentRule variable="c3">
+      <assignmentRule variable="VTG">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
-            <times/>
+            <divide/>
             <apply>
               <divide/>
+              <cn type="integer"> 70 </cn>
               <apply>
-                <times/>
-                <ci> k7 </ci>
-                <ci> G_b </ci>
-              </apply>
-              <apply>
-                <times/>
-                <ci> f_I </ci>
-                <ci> tau_i </ci>
-                <ci> I_PL_b </ci>
+                <root/>
+                <degree>
+                  <cn type="integer"> 2 </cn>
+                </degree>
+                <apply>
+                  <divide/>
+                  <ci> BW </ci>
+                  <cn type="integer"> 70 </cn>
+                </apply>
               </apply>
             </apply>
-            <ci> t_integralwindow </ci>
+            <cn type="integer"> 1000 </cn>
           </apply>
         </math>
       </assignmentRule>
@@ -1034,7 +1136,6 @@ FOR A PARTICULAR PURPOSE.</p></body>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
             <times/>
-            <ci> sigma </ci>
             <apply>
               <power/>
               <ci> k1 </ci>
@@ -1052,58 +1153,106 @@ FOR A PARTICULAR PURPOSE.</p></body>
             <apply>
               <exp/>
               <apply>
-                <minus/>
+                <times/>
                 <apply>
-                  <power/>
-                  <apply>
-                    <times/>
-                    <ci> k1 </ci>
-                    <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
-                  </apply>
-                  <ci> sigma </ci>
+                  <minus/>
+                  <cn type="integer"> 1 </cn>
                 </apply>
+                <ci> k1 </ci>
+                <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
               </apply>
             </apply>
-            <ci> D_meal_G </ci>
+            <ci> mG </ci>
+            <apply>
+              <divide/>
+              <cn type="integer"> 1 </cn>
+              <cn> 0.887263817503075 </cn>
+            </apply>
           </apply>
         </math>
       </assignmentRule>
-      <rateRule variable="M_G_gut">
+      <assignmentRule variable="intestinal_absorption">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> k2 </ci>
+            <ci> g_gut </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <rateRule variable="g_gut">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
             <minus/>
             <ci> G_meal </ci>
-            <apply>
-              <times/>
-              <ci> k2 </ci>
-              <ci> M_G_gut </ci>
-            </apply>
+            <ci> intestinal_absorption </ci>
           </apply>
         </math>
       </rateRule>
-      <assignmentRule variable="G_liv">
+      <assignmentRule variable="distribution_volume_correction">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <cn type="integer"> 1 </cn>
+            <apply>
+              <times/>
+              <ci> VG </ci>
+              <ci> BW </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="unit_conversion_glucose_insulin">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <cn type="integer"> 1 </cn>
+            <ci> fI </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="egp_inhibition_by_insulin">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> k4 </ci>
+            <ci> i_intestitial </ci>
+            <ci> unit_conversion_glucose_insulin </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="egp_inhibition_by_glucose">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> k3 </ci>
+            <apply>
+              <minus/>
+              <ci> g_plasma </ci>
+              <ci> G_b </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="G_liver">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
             <minus/>
             <apply>
               <minus/>
               <ci> G_liv_b </ci>
-              <apply>
-                <times/>
-                <ci> k4 </ci>
-                <ci> f_I </ci>
-                <ci> I_d1 </ci>
-              </apply>
+              <ci> egp_inhibition_by_insulin </ci>
             </apply>
-            <apply>
-              <times/>
-              <ci> k3 </ci>
-              <apply>
-                <minus/>
-                <ci> G_PL </ci>
-                <ci> G_b </ci>
-              </apply>
-            </apply>
+            <ci> egp_inhibition_by_glucose </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="glucose_appearance">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> k2 </ci>
+            <ci> g_gut </ci>
           </apply>
         </math>
       </assignmentRule>
@@ -1111,92 +1260,92 @@ FOR A PARTICULAR PURPOSE.</p></body>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
             <times/>
-            <ci> k2 </ci>
-            <apply>
-              <divide/>
-              <ci> f_G </ci>
-              <apply>
-                <times/>
-                <ci> V_G </ci>
-                <ci> BW </ci>
-              </apply>
-            </apply>
-            <ci> M_G_gut </ci>
+            <ci> glucose_appearance </ci>
+            <ci> distribution_volume_correction </ci>
+            <ci> fG </ci>
           </apply>
         </math>
       </assignmentRule>
-      <assignmentRule variable="U_ii">
+      <assignmentRule variable="normalized_utilization_rate">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
-            <times/>
-            <ci> G_liv_b </ci>
+            <divide/>
             <apply>
-              <divide/>
+              <times/>
               <apply>
                 <plus/>
-                <ci> KM </ci>
+                <ci> Km </ci>
                 <ci> G_b </ci>
               </apply>
+              <ci> g_plasma </ci>
+            </apply>
+            <apply>
+              <times/>
               <ci> G_b </ci>
-            </apply>
-            <apply>
-              <divide/>
-              <ci> G_PL </ci>
               <apply>
                 <plus/>
-                <ci> KM </ci>
-                <ci> G_PL </ci>
+                <ci> Km </ci>
+                <ci> g_plasma </ci>
               </apply>
             </apply>
           </apply>
         </math>
       </assignmentRule>
-      <assignmentRule variable="U_id">
+      <assignmentRule variable="G_iid">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
             <times/>
-            <ci> k5 </ci>
-            <ci> f_I </ci>
-            <ci> I_d1 </ci>
+            <ci> normalized_utilization_rate </ci>
+            <ci> G_liv_b </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="utilization_rate">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
             <apply>
-              <divide/>
-              <ci> G_PL </ci>
-              <apply>
-                <plus/>
-                <ci> KM </ci>
-                <ci> G_PL </ci>
-              </apply>
+              <times/>
+              <ci> k5 </ci>
+              <ci> g_plasma </ci>
+            </apply>
+            <apply>
+              <plus/>
+              <ci> Km </ci>
+              <ci> g_plasma </ci>
             </apply>
           </apply>
         </math>
       </assignmentRule>
-      <assignmentRule variable="U_ren">
+      <assignmentRule variable="G_idp">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
             <times/>
-            <apply>
-              <divide/>
-              <ci> c1 </ci>
-              <apply>
-                <times/>
-                <ci> V_G </ci>
-                <ci> BW </ci>
-              </apply>
-            </apply>
+            <ci> utilization_rate </ci>
+            <ci> i_intestitial </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="G_ren">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> c1 </ci>
+            <ci> distribution_volume_correction </ci>
             <apply>
               <minus/>
-              <ci> G_PL </ci>
-              <ci> G_th_PL </ci>
+              <ci> g_plasma </ci>
+              <ci> G_threshold_pl </ci>
             </apply>
             <apply>
-              <ci> G_thresholding </ci>
-              <ci> G_PL </ci>
-              <ci> G_th_PL </ci>
+              <ci> thresholding </ci>
+              <ci> g_plasma </ci>
+              <ci> G_threshold_pl </ci>
             </apply>
           </apply>
         </math>
       </assignmentRule>
-      <rateRule variable="G_PL">
+      <rateRule variable="g_plasma">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
             <minus/>
@@ -1206,113 +1355,111 @@ FOR A PARTICULAR PURPOSE.</p></body>
                 <minus/>
                 <apply>
                   <plus/>
-                  <ci> G_liv </ci>
+                  <ci> G_liver </ci>
                   <ci> G_gut </ci>
                 </apply>
-                <ci> U_ii </ci>
+                <ci> G_iid </ci>
               </apply>
-              <ci> U_id </ci>
+              <ci> G_idp </ci>
             </apply>
-            <ci> U_ren </ci>
+            <ci> G_ren </ci>
           </apply>
         </math>
       </rateRule>
-      <rateRule variable="I_pnc">
+      <rateRule variable="g_integral">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <ci> g_plasma </ci>
+            <ci> G_b </ci>
+          </apply>
+        </math>
+      </rateRule>
+      <assignmentRule variable="I_proportional">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> k6 </ci>
+            <apply>
+              <minus/>
+              <ci> g_plasma </ci>
+              <ci> G_b </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="I_integral">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
             <times/>
             <apply>
-              <power/>
-              <ci> f_I </ci>
-              <apply>
-                <minus/>
-                <cn type="integer"> 1 </cn>
-              </apply>
+              <divide/>
+              <ci> k7 </ci>
+              <ci> tau_i </ci>
             </apply>
             <apply>
               <plus/>
-              <apply>
-                <times/>
-                <ci> k6 </ci>
-                <apply>
-                  <minus/>
-                  <ci> G_PL </ci>
-                  <ci> G_b </ci>
-                </apply>
-              </apply>
-              <apply>
-                <times/>
-                <apply>
-                  <divide/>
-                  <ci> k7 </ci>
-                  <ci> tau_i </ci>
-                </apply>
-                <apply>
-                  <minus/>
-                  <ci> G_PL </ci>
-                  <ci> G_b </ci>
-                </apply>
-              </apply>
-              <apply>
-                <times/>
-                <apply>
-                  <divide/>
-                  <ci> k7 </ci>
-                  <ci> tau_i </ci>
-                </apply>
-                <ci> G_b </ci>
-              </apply>
-              <apply>
-                <times/>
-                <ci> k8 </ci>
-                <ci> tau_d </ci>
-                <ci> G_PL </ci>
-              </apply>
+              <ci> g_integral </ci>
+              <ci> G_b </ci>
             </apply>
           </apply>
         </math>
-      </rateRule>
+      </assignmentRule>
+      <assignmentRule variable="I_derivative">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> k8 </ci>
+            <ci> tau_d </ci>
+            <ci> g_plasma </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="I_pnc">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <plus/>
+              <ci> I_proportional </ci>
+              <ci> I_integral </ci>
+              <ci> I_derivative </ci>
+            </apply>
+            <ci> fI </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="basal_rate">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <ci> k7 </ci>
+                <ci> tau_i </ci>
+              </apply>
+              <ci> G_b </ci>
+            </apply>
+            <ci> fI </ci>
+          </apply>
+        </math>
+      </assignmentRule>
       <assignmentRule variable="I_liv">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
             <times/>
-            <ci> k7 </ci>
+            <ci> basal_rate </ci>
             <apply>
               <divide/>
-              <ci> G_b </ci>
-              <apply>
-                <times/>
-                <ci> f_I </ci>
-                <ci> tau_i </ci>
-                <ci> I_PL_b </ci>
-              </apply>
+              <ci> I_PL </ci>
+              <ci> I_pl_b </ci>
             </apply>
-            <ci> I_PL </ci>
           </apply>
         </math>
       </assignmentRule>
-      <rateRule variable="I_d1">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
-          <apply>
-            <minus/>
-            <apply>
-              <times/>
-              <ci> k9 </ci>
-              <apply>
-                <minus/>
-                <ci> I_PL </ci>
-                <ci> I_PL_b </ci>
-              </apply>
-            </apply>
-            <apply>
-              <times/>
-              <ci> k10 </ci>
-              <ci> I_d1 </ci>
-            </apply>
-          </apply>
-        </math>
-      </rateRule>
-      <assignmentRule variable="i_rem">
+      <assignmentRule variable="I_int">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
             <times/>
@@ -1320,7 +1467,7 @@ FOR A PARTICULAR PURPOSE.</p></body>
             <apply>
               <minus/>
               <ci> I_PL </ci>
-              <ci> I_PL_b </ci>
+              <ci> I_pl_b </ci>
             </apply>
           </apply>
         </math>
@@ -1334,11 +1481,42 @@ FOR A PARTICULAR PURPOSE.</p></body>
               <ci> I_pnc </ci>
               <ci> I_liv </ci>
             </apply>
-            <ci> i_rem </ci>
+            <ci> I_int </ci>
           </apply>
         </math>
       </rateRule>
-      <rateRule variable="I_d2">
+      <assignmentRule variable="appearance">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> k9 </ci>
+            <apply>
+              <minus/>
+              <ci> I_PL </ci>
+              <ci> I_pl_b </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="degradation">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> k10 </ci>
+            <ci> i_intestitial </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <rateRule variable="i_intestitial">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <ci> appearance </ci>
+            <ci> degradation </ci>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule variable="i_delay1">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
             <times/>
@@ -1350,12 +1528,12 @@ FOR A PARTICULAR PURPOSE.</p></body>
             <apply>
               <minus/>
               <ci> I_PL </ci>
-              <ci> I_d2 </ci>
+              <ci> i_delay1 </ci>
             </apply>
           </apply>
         </math>
       </rateRule>
-      <rateRule variable="I_d3">
+      <rateRule variable="i_delay2">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
             <times/>
@@ -1366,13 +1544,13 @@ FOR A PARTICULAR PURPOSE.</p></body>
             </apply>
             <apply>
               <minus/>
-              <ci> I_d2 </ci>
-              <ci> I_d3 </ci>
+              <ci> i_delay1 </ci>
+              <ci> i_delay2 </ci>
             </apply>
           </apply>
         </math>
       </rateRule>
-      <rateRule variable="I_d4">
+      <rateRule variable="i_delay3">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
             <times/>
@@ -1383,122 +1561,172 @@ FOR A PARTICULAR PURPOSE.</p></body>
             </apply>
             <apply>
               <minus/>
-              <ci> I_d3 </ci>
-              <ci> I_d4 </ci>
+              <ci> i_delay2 </ci>
+              <ci> i_delay3 </ci>
             </apply>
           </apply>
         </math>
       </rateRule>
-      <assignmentRule variable="TG_meal">
+      <assignmentRule variable="LPL_lipolysis">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
             <times/>
-            <ci> sigma </ci>
-            <apply>
-              <power/>
-              <ci> k13 </ci>
-              <ci> sigma </ci>
-            </apply>
-            <apply>
-              <power/>
-              <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
-              <apply>
-                <minus/>
-                <ci> sigma </ci>
-                <cn type="integer"> 1 </cn>
-              </apply>
-            </apply>
-            <apply>
-              <exp/>
-              <apply>
-                <minus/>
-                <apply>
-                  <power/>
-                  <apply>
-                    <times/>
-                    <ci> k13 </ci>
-                    <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
-                  </apply>
-                  <ci> sigma </ci>
-                </apply>
-              </apply>
-            </apply>
-            <ci> D_meal_TG </ci>
+            <ci> k11 </ci>
+            <ci> tg_plasma </ci>
+            <ci> i_delay3 </ci>
           </apply>
         </math>
       </assignmentRule>
-      <rateRule variable="M_TG_gut_1">
+      <assignmentRule variable="fractional_spillover">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <cn type="rational"> 1 <sep/> 100 </cn>
+            <ci> spill </ci>
+            <apply>
+              <divide/>
+              <ci> I_pl_b </ci>
+              <ci> i_delay1 </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="spillover">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <cn type="integer"> 3 </cn>
+            <ci> fractional_spillover </ci>
+            <ci> LPL_lipolysis </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="adipose_tg_lipolysis">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> ATL_max </ci>
+            <apply>
+              <plus/>
+              <cn type="integer"> 1 </cn>
+              <apply>
+                <times/>
+                <ci> K_ATL </ci>
+                <apply>
+                  <power/>
+                  <ci> i_delay1 </ci>
+                  <cn type="integer"> 2 </cn>
+                </apply>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="tissue_uptake">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> k12 </ci>
+            <ci> nefa_plasma </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <rateRule variable="nefa_plasma">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
             <minus/>
-            <ci> TG_meal </ci>
+            <apply>
+              <plus/>
+              <ci> spillover </ci>
+              <ci> adipose_tg_lipolysis </ci>
+            </apply>
+            <ci> tissue_uptake </ci>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule variable="tg_gut">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <apply>
+                <power/>
+                <ci> k13 </ci>
+                <ci> sigma </ci>
+              </apply>
+              <apply>
+                <power/>
+                <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                <apply>
+                  <minus/>
+                  <ci> sigma </ci>
+                  <cn type="integer"> 1 </cn>
+                </apply>
+              </apply>
+              <apply>
+                <exp/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <minus/>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <ci> k13 </ci>
+                  <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                </apply>
+              </apply>
+              <ci> mTG </ci>
+              <apply>
+                <divide/>
+                <cn type="integer"> 1 </cn>
+                <cn> 0.887263817503075 </cn>
+              </apply>
+            </apply>
             <apply>
               <times/>
               <ci> k14 </ci>
-              <ci> M_TG_gut_1 </ci>
+              <ci> tg_gut </ci>
             </apply>
           </apply>
         </math>
       </rateRule>
-      <rateRule variable="M_TG_gut_2">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
-          <apply>
-            <minus/>
-            <apply>
-              <times/>
-              <ci> k14 </ci>
-              <ci> M_TG_gut_1 </ci>
-            </apply>
-            <apply>
-              <times/>
-              <ci> k14 </ci>
-              <ci> M_TG_gut_2 </ci>
-            </apply>
-          </apply>
-        </math>
-      </rateRule>
-      <rateRule variable="M_TG_gut_3">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
-          <apply>
-            <minus/>
-            <apply>
-              <times/>
-              <ci> k14 </ci>
-              <ci> M_TG_gut_2 </ci>
-            </apply>
-            <apply>
-              <times/>
-              <ci> k14 </ci>
-              <ci> M_TG_gut_3 </ci>
-            </apply>
-          </apply>
-        </math>
-      </rateRule>
-      <assignmentRule variable="TG_gut">
+      <rateRule variable="tg_delay1">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
             <times/>
             <ci> k14 </ci>
             <apply>
-              <divide/>
-              <ci> f_TG </ci>
-              <apply>
-                <times/>
-                <ci> V_TG </ci>
-                <ci> BW </ci>
-              </apply>
+              <minus/>
+              <ci> tg_gut </ci>
+              <ci> tg_delay1 </ci>
             </apply>
-            <ci> M_TG_gut_3 </ci>
           </apply>
         </math>
-      </assignmentRule>
-      <assignmentRule variable="LPL">
+      </rateRule>
+      <rateRule variable="tg_delay2">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
             <times/>
-            <ci> k11 </ci>
-            <ci> TG_PL </ci>
-            <ci> I_d4 </ci>
+            <ci> k14 </ci>
+            <apply>
+              <minus/>
+              <ci> tg_delay1 </ci>
+              <ci> tg_delay2 </ci>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <assignmentRule variable="distribution_volume_correction_tg">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <cn type="integer"> 1 </cn>
+            <apply>
+              <times/>
+              <ci> VTG </ci>
+              <ci> BW </ci>
+            </apply>
           </apply>
         </math>
       </assignmentRule>
@@ -1506,20 +1734,31 @@ FOR A PARTICULAR PURPOSE.</p></body>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
             <minus/>
-            <ci> k16 </ci>
+            <ci> mG </ci>
             <apply>
               <times/>
-              <ci> k15 </ci>
+              <ci> mTG </ci>
               <apply>
                 <minus/>
-                <ci> I_d4 </ci>
-                <ci> I_PL_b </ci>
+                <ci> i_delay3 </ci>
+                <ci> I_pl_b </ci>
               </apply>
             </apply>
           </apply>
         </math>
       </assignmentRule>
-      <rateRule variable="TG_PL">
+      <assignmentRule variable="TG_gut">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> k14 </ci>
+            <ci> distribution_volume_correction_tg </ci>
+            <ci> fTG </ci>
+            <ci> tg_delay2 </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <rateRule variable="tg_plasma">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
             <minus/>
@@ -1528,24 +1767,10 @@ FOR A PARTICULAR PURPOSE.</p></body>
               <ci> VLDL </ci>
               <ci> TG_gut </ci>
             </apply>
-            <ci> LPL </ci>
+            <ci> LPL_lipolysis </ci>
           </apply>
         </math>
       </rateRule>
-      <assignmentRule variable="frac_spill">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
-          <apply>
-            <times/>
-            <cn type="rational"> 1 <sep/> 100 </cn>
-            <ci> spill </ci>
-            <apply>
-              <divide/>
-              <ci> I_PL_b </ci>
-              <ci> I_d2 </ci>
-            </apply>
-          </apply>
-        </math>
-      </assignmentRule>
     </listOfRules>
     <comp:listOfPorts>
       <comp:port metaid="Vext_port" sboTerm="SBO:0000599" comp:idRef="Vext" comp:id="Vext_port" comp:name="Port of Vext"/>
