@@ -324,7 +324,7 @@ _m.rules = [
 
     AssignmentRule("I_pnc",
                    name="I_pnc",
-                   value="(I_proportional+I_integral+I_derivative)/fI"),
+                   value="(I_proportional+I_integral)/fI"),
 
     # # Pancreas
 
