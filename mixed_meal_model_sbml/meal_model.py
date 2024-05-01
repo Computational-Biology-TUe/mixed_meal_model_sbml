@@ -20,8 +20,8 @@ class U(templates.U):
     pass
 
 
-plasma = "Vext"
-gut = "Vgut"
+plasma = "plasma"
+gut = "gut"
 
 _m = Model(
     "meal_model",
@@ -43,7 +43,8 @@ _m.compartments = [
         sboTerm=SBO.PHYSICAL_COMPARTMENT,
         annotations=annotations.compartments["plasma"],
         unit=U.liter,
-        port=True,
+        constant=True,
+        # port=True,
     ),
     # for now, we leave this compartment out
     # Compartment(
@@ -69,25 +70,25 @@ _m.species = [
     #     port=True,
     # ),
     # Species("g_gut", gut, 0.0, annotations=annotations.species["glc"]),  # du[1] [unit=u"mg"],
-    Species("g_plasma", plasma, 0.0, name="g_plasma", annotations=annotations.species["glc"]),
+    Species("g_plasma", plasma, initialConcentration=0.0, boundaryCondition=False, name="g_plasma", annotations=annotations.species["glc"]),
     # du[2] [unit=u"mmolGlucose/l"],
-    Species("g_integral", plasma, 0.0, name="g_integral", annotations=annotations.species["glc"]),
+    Species("g_integral", plasma, 0.0, boundaryCondition=False, name="g_integral", annotations=annotations.species["glc"]),
     # du[3]  G_int(t), [unit=u"(mmolGlucose*min)/l"],
-    Species("I_PL", plasma, 0.0, name="i_plasma", annotations=annotations.species["ins"]),
+    Species("I_PL", plasma, initialConcentration=0.0, boundaryCondition=False, name="i_plasma", annotations=annotations.species["ins"]),
     # du[4] I_plasma(t), [unit=u"μIU/ml"],
     # Species("i_intestitial", gut, 0.0, annotations=annotations.species["ins"]), # du[5] I_interstitial(t), [unit=u"μIU/ml"],
-    Species("i_delay1", plasma, 0.0, name="i_delay1", annotations=annotations.species["ins"]),
+    Species("i_delay1", plasma, initialConcentration=0.0, boundaryCondition=False, name="i_delay1", annotations=annotations.species["ins"]),
     # du[6]  I_delay_1(t), [unit=u"μIU/ml"],
-    Species("i_delay2", plasma, 0.0, name="i_delay2", annotations=annotations.species["ins"]),
+    Species("i_delay2", plasma, initialConcentration=0.0, boundaryCondition=False, name="i_delay2", annotations=annotations.species["ins"]),
     # du[7]  I_delay_2(t), [unit=u"μIU/ml"],
-    Species("i_delay3", plasma, 0.0, name="i_delay3", annotations=annotations.species["ins"]),
+    Species("i_delay3", plasma, initialConcentration=0.0, boundaryCondition=False, name="i_delay3", annotations=annotations.species["ins"]),
     # du[8]  I_delay_3(t), [unit=u"μIU/ml"],
-    Species("nefa_plasma", plasma, 0.0, name="nefa_plasma",
+    Species("nefa_plasma", plasma, initialConcentration=0.0, boundaryCondition=False, name="nefa_plasma",
             annotations=annotations.species["nefa"]),  # du[9] NEFA_plasma(t), [unit=u"mmolNEFA/l"],
     # Species("tg_gut", gut, 0.0, name="tg_gut", annotations=annotations.species["tg"]),  # du[10]  TG_gut(t), [unit=u"mg"],
     # Species("tg_delay1", gut, 0.0, name="tg_delay1", annotations=annotations.species["tg"]),  # du[11]
     # Species("tg_delay2", gut, 0.0, name="tg_delay2", annotations=annotations.species["tg"]),  # du[12]
-    Species("tg_plasma", plasma, 0.0, name="tg_plasma", annotations=annotations.species["tg"]),
+    Species("tg_plasma", plasma, initialConcentration=0.0, boundaryCondition=False, name="tg_plasma", annotations=annotations.species["tg"]),
     # du[13] TG_plasma(t), [unit=u"mmolTG/l"]
 
 ]
@@ -328,7 +329,7 @@ _m.rules = [
     # # Pancreas
 
     AssignmentRule("basal_rate",
-                   name="I_pnc",
+                   name="basal_rate",
                    value="((k7/tau_i)*G_b)/fI"),
 
     AssignmentRule("I_liv",
@@ -349,10 +350,6 @@ _m.rules = [
 
     # # Insulin in the interstitial fluid
     # du[5] = interstitial_insulin_flux(p, u)
-    # TODO: is appearance the same as I_int?
-    AssignmentRule("appearance",
-                   name="Insulin appearance",
-                   value="k9*(I_PL-I_pl_b)"),
 
     AssignmentRule("degradation",
                    name="Insulin degradation",
@@ -360,7 +357,7 @@ _m.rules = [
 
     RateRule("i_intestitial",
              name="interstitial_insulin_flux",
-             value="appearance-degradation"),
+             value="I_int-degradation"),
 
     # # ------------------------------------
     # # Insulin delays for NEFA_pl
@@ -434,7 +431,7 @@ _m.rules = [
     # # endogenous secretion of TG (in the form of VLDL)
     AssignmentRule("VLDL",
                    name="endogenous secretion of TG",
-                   value="mG-mTG*(i_delay3-I_pl_b)"),
+                   value="k16-k15*(i_delay3-I_pl_b)"),
 
     # # TG from the gut
     AssignmentRule("TG_gut",
@@ -456,7 +453,7 @@ def simulate(sbml_path: Path):
     import pickle
     r: roadrunner.RoadRunner = roadrunner.RoadRunner(str(sbml_path))
     _s = r.simulate(start=0, end=500, steps=500)
-    r.plot(_s)
+    # r.plot(_s)
     s_out = pd.DataFrame(_s, columns=_s.colnames)
     s_out.to_pickle("test_res.pkl")
 
@@ -467,4 +464,4 @@ if __name__ == "__main__":
         validation_options=ValidationOptions(units_consistency=False, modeling_practice=False)
     )
     simulate(result.sbml_path)
-    visualize_sbml(sbml_path=result.sbml_path, delete_session=True)
+    # visualize_sbml(sbml_path=result.sbml_path, delete_session=True)
