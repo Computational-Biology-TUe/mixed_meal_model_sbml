@@ -47,14 +47,14 @@ _m.compartments = [
         # port=True,
     ),
     # for now, we leave this compartment out
-    # Compartment(
-    #     gut,
-    #     4,
-    #     name="gut",
-    #     sboTerm=SBO.PHYSICAL_COMPARTMENT,
-    #     annotations=annotations.compartments["gut"],
-    #     port=True,
-    # ),
+    Compartment(
+        gut,
+        4,
+        name="gut",
+        sboTerm=SBO.PHYSICAL_COMPARTMENT,
+        annotations=annotations.compartments["gut"],
+        port=True,
+    ),
 ]
 
 _m.species = [
@@ -69,14 +69,14 @@ _m.species = [
     #     annotations=annotations.species["met"],
     #     port=True,
     # ),
-    # Species("g_gut", gut, 0.0, annotations=annotations.species["glc"]),  # du[1] [unit=u"mg"],
+    Species("g_gut", gut, initialConcentration=0.0, boundaryCondition=False, annotations=annotations.species["glc"]),  # du[1] [unit=u"mg"],
     Species("g_plasma", plasma, initialConcentration=0.0, boundaryCondition=False, name="g_plasma", annotations=annotations.species["glc"]),
     # du[2] [unit=u"mmolGlucose/l"],
-    Species("g_integral", plasma, 0.0, boundaryCondition=False, name="g_integral", annotations=annotations.species["glc"]),
+    Species("g_integral", plasma, initialConcentration=0.0, boundaryCondition=False, name="g_integral", annotations=annotations.species["glc"]),
     # du[3]  G_int(t), [unit=u"(mmolGlucose*min)/l"],
     Species("I_PL", plasma, initialConcentration=0.0, boundaryCondition=False, name="i_plasma", annotations=annotations.species["ins"]),
     # du[4] I_plasma(t), [unit=u"μIU/ml"],
-    # Species("i_intestitial", gut, 0.0, annotations=annotations.species["ins"]), # du[5] I_interstitial(t), [unit=u"μIU/ml"],
+    Species("i_intestitial", gut, initialConcentration=0.0, boundaryCondition=False, annotations=annotations.species["ins"]), # du[5] I_interstitial(t), [unit=u"μIU/ml"],
     Species("i_delay1", plasma, initialConcentration=0.0, boundaryCondition=False, name="i_delay1", annotations=annotations.species["ins"]),
     # du[6]  I_delay_1(t), [unit=u"μIU/ml"],
     Species("i_delay2", plasma, initialConcentration=0.0, boundaryCondition=False, name="i_delay2", annotations=annotations.species["ins"]),
@@ -85,11 +85,13 @@ _m.species = [
     # du[8]  I_delay_3(t), [unit=u"μIU/ml"],
     Species("nefa_plasma", plasma, initialConcentration=0.0, boundaryCondition=False, name="nefa_plasma",
             annotations=annotations.species["nefa"]),  # du[9] NEFA_plasma(t), [unit=u"mmolNEFA/l"],
-    # Species("tg_gut", gut, 0.0, name="tg_gut", annotations=annotations.species["tg"]),  # du[10]  TG_gut(t), [unit=u"mg"],
-    # Species("tg_delay1", gut, 0.0, name="tg_delay1", annotations=annotations.species["tg"]),  # du[11]
-    # Species("tg_delay2", gut, 0.0, name="tg_delay2", annotations=annotations.species["tg"]),  # du[12]
+    Species("tg_gut", gut, initialConcentration=0.0, boundaryCondition=False, name="tg_gut", annotations=annotations.species["tg"]),  # du[10]  TG_gut(t), [unit=u"mg"],
+    Species("tg_delay1", gut, initialConcentration=0.0, boundaryCondition=False, name="tg_delay1", annotations=annotations.species["tg"]),  # du[11]
+    Species("tg_delay2", gut, initialConcentration=0.0, boundaryCondition=False, name="tg_delay2", annotations=annotations.species["tg"]),  # du[12]
     Species("tg_plasma", plasma, initialConcentration=0.0, boundaryCondition=False, name="tg_plasma", annotations=annotations.species["tg"]),
     # du[13] TG_plasma(t), [unit=u"mmolTG/l"]
+
+    Species("test", plasma, initialConcentration=0.0, boundaryCondition=False, name="test", annotations=annotations.species["glc"])
 
 ]
 
@@ -180,22 +182,31 @@ _m.parameters = [
     Parameter("mTG", 60000, name="meals_tg_mass", sboTerm=SBO.SBO_0000002),
     Parameter("BW", 84.2, name="subject_body_mass", sboTerm=SBO.SBO_0000002),
 
-    # gut parameters. They should be converted to species when adding the gut compartment
-    Parameter("g_gut", 0.0, annotations=annotations.species["glc"], constant=False),
-    # du[1] [unit=u"mg"],
-    Parameter("i_intestitial", 0.0, annotations=annotations.species["ins"], constant=False),
-    # du[5] I_interstitial(t), [unit=u"μIU/ml"],
-    Parameter("tg_gut", 0.0, name="tg_gut", annotations=annotations.species["tg"], constant=False),
-    # du[10]  TG_gut(t), [unit=u"mg"],
-    Parameter("tg_delay1", 0.0, name="tg_delay1", annotations=annotations.species["tg"],
-              constant=False),  # du[11]
-    Parameter("tg_delay2", 0.0, name="tg_delay2", annotations=annotations.species["tg"],
-              constant=False),  # du[12]
-
 ]
+
+# _m.reactions = [
+#         Reaction(
+#             "METEX",
+#             name="metoprolol renal excretion",
+#             equation="met_ext -> met_urine",
+#             sboTerm=SBO.TRANSPORT_REACTION,
+#             compartment="Vki",
+#             pars=[
+#                 Parameter(
+#                     "METEX_k",
+#                     2.5,  # (7.5 + 60 + 10)/77.5
+#                     unit=U.per_min,
+#                     name="metoprolol urinary excretion (kidney)",
+#                     sboTerm=SBO.QUANTITATIVE_SYSTEMS_DESCRIPTION_PARAMETER,
+#                 ),
+#             ],
+#             formula=("f_renal_function * METEX_k * Vki * met_ext", U.mmole_per_min),
+#         )
+# ]
 
 # Assignment rules
 _m.rules = [
+
     # custom functions
     # return 1 if the first argument is bigger than the second, 0 otherwise
     Function("thresholding", name="thresholding", value="lambda(x,y, piecewise(1,gt(x,y),0))"),
@@ -320,7 +331,7 @@ _m.rules = [
 
     AssignmentRule("I_derivative",
                    name="I_derivative",
-                   value="(k8*tau_d)*g_plasma"),
+                   value="(k8*tau_d)*rateOf(g_plasma)"),
 
     AssignmentRule("I_pnc",
                    name="I_pnc",
@@ -464,4 +475,4 @@ if __name__ == "__main__":
         validation_options=ValidationOptions(units_consistency=False, modeling_practice=False)
     )
     simulate(result.sbml_path)
-    # visualize_sbml(sbml_path=result.sbml_path, delete_session=True)
+    visualize_sbml(sbml_path=result.sbml_path, delete_session=True)

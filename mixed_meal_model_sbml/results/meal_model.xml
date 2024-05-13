@@ -246,10 +246,10 @@ FOR A PARTICULAR PURPOSE.</p></body>
       </unitDefinition>
     </listOfUnitDefinitions>
     <listOfCompartments>
-      <compartment metaid="meta_Vext" sboTerm="SBO:0000290" id="Vext" name="plasma" spatialDimensions="3" size="4" units="litre" constant="true">
+      <compartment metaid="meta_plasma" sboTerm="SBO:0000290" id="plasma" name="plasma" spatialDimensions="3" size="4" units="litre" constant="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
-            <rdf:Description rdf:about="#meta_Vext">
+            <rdf:Description rdf:about="#meta_plasma">
               <bqbiol:is>
                 <rdf:Bag>
                   <rdf:li rdf:resource="http://identifiers.org/SBO:0000290"/>
@@ -260,9 +260,41 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </compartment>
+      <compartment metaid="meta_gut" sboTerm="SBO:0000290" id="gut" name="gut" spatialDimensions="3" size="4" constant="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_gut">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/SBO:0000290"/>
+                  <rdf:li rdf:resource="http://identifiers.org/CHEBI:6904"/>
+                  <rdf:li rdf:resource="http://identifiers.org/ncit/C61845"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchikey/IUBSYMUCCVWXPE-UHFFFAOYSA-N"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </compartment>
     </listOfCompartments>
     <listOfSpecies>
-      <species metaid="meta_g_plasma" sboTerm="SBO:0000247" id="g_plasma" name="g_plasma" compartment="Vext" initialAmount="0" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+      <species metaid="meta_g_gut" sboTerm="SBO:0000247" id="g_gut" compartment="gut" initialConcentration="0" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_g_gut">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/SBO:0000247"/>
+                  <rdf:li rdf:resource="http://identifiers.org/CHEBI:6904"/>
+                  <rdf:li rdf:resource="http://identifiers.org/ncit/C61845"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchikey/IUBSYMUCCVWXPE-UHFFFAOYSA-N"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="meta_g_plasma" sboTerm="SBO:0000247" id="g_plasma" name="g_plasma" compartment="plasma" initialConcentration="0" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_g_plasma">
@@ -278,7 +310,7 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </species>
-      <species metaid="meta_g_integral" sboTerm="SBO:0000247" id="g_integral" name="g_integral" compartment="Vext" initialAmount="0" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+      <species metaid="meta_g_integral" sboTerm="SBO:0000247" id="g_integral" name="g_integral" compartment="plasma" initialConcentration="0" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_g_integral">
@@ -294,7 +326,7 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </species>
-      <species metaid="meta_I_PL" sboTerm="SBO:0000247" id="I_PL" name="i_plasma" compartment="Vext" initialAmount="0" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+      <species metaid="meta_I_PL" sboTerm="SBO:0000247" id="I_PL" name="i_plasma" compartment="plasma" initialConcentration="0" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_I_PL">
@@ -310,7 +342,23 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </species>
-      <species metaid="meta_i_delay1" sboTerm="SBO:0000247" id="i_delay1" name="i_delay1" compartment="Vext" initialAmount="0" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+      <species metaid="meta_i_intestitial" sboTerm="SBO:0000247" id="i_intestitial" compartment="gut" initialConcentration="0" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_i_intestitial">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/SBO:0000247"/>
+                  <rdf:li rdf:resource="http://identifiers.org/CHEBI:6904"/>
+                  <rdf:li rdf:resource="http://identifiers.org/ncit/C61845"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchikey/IUBSYMUCCVWXPE-UHFFFAOYSA-N"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="meta_i_delay1" sboTerm="SBO:0000247" id="i_delay1" name="i_delay1" compartment="plasma" initialConcentration="0" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_i_delay1">
@@ -326,7 +374,7 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </species>
-      <species metaid="meta_i_delay2" sboTerm="SBO:0000247" id="i_delay2" name="i_delay2" compartment="Vext" initialAmount="0" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+      <species metaid="meta_i_delay2" sboTerm="SBO:0000247" id="i_delay2" name="i_delay2" compartment="plasma" initialConcentration="0" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_i_delay2">
@@ -342,7 +390,7 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </species>
-      <species metaid="meta_i_delay3" sboTerm="SBO:0000247" id="i_delay3" name="i_delay3" compartment="Vext" initialAmount="0" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+      <species metaid="meta_i_delay3" sboTerm="SBO:0000247" id="i_delay3" name="i_delay3" compartment="plasma" initialConcentration="0" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_i_delay3">
@@ -358,7 +406,7 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </species>
-      <species metaid="meta_nefa_plasma" sboTerm="SBO:0000247" id="nefa_plasma" name="nefa_plasma" compartment="Vext" initialAmount="0" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+      <species metaid="meta_nefa_plasma" sboTerm="SBO:0000247" id="nefa_plasma" name="nefa_plasma" compartment="plasma" initialConcentration="0" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_nefa_plasma">
@@ -374,10 +422,74 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </species>
-      <species metaid="meta_tg_plasma" sboTerm="SBO:0000247" id="tg_plasma" name="tg_plasma" compartment="Vext" initialAmount="0" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+      <species metaid="meta_tg_gut" sboTerm="SBO:0000247" id="tg_gut" name="tg_gut" compartment="gut" initialConcentration="0" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_tg_gut">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/SBO:0000247"/>
+                  <rdf:li rdf:resource="http://identifiers.org/CHEBI:6904"/>
+                  <rdf:li rdf:resource="http://identifiers.org/ncit/C61845"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchikey/IUBSYMUCCVWXPE-UHFFFAOYSA-N"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="meta_tg_delay1" sboTerm="SBO:0000247" id="tg_delay1" name="tg_delay1" compartment="gut" initialConcentration="0" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_tg_delay1">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/SBO:0000247"/>
+                  <rdf:li rdf:resource="http://identifiers.org/CHEBI:6904"/>
+                  <rdf:li rdf:resource="http://identifiers.org/ncit/C61845"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchikey/IUBSYMUCCVWXPE-UHFFFAOYSA-N"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="meta_tg_delay2" sboTerm="SBO:0000247" id="tg_delay2" name="tg_delay2" compartment="gut" initialConcentration="0" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_tg_delay2">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/SBO:0000247"/>
+                  <rdf:li rdf:resource="http://identifiers.org/CHEBI:6904"/>
+                  <rdf:li rdf:resource="http://identifiers.org/ncit/C61845"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchikey/IUBSYMUCCVWXPE-UHFFFAOYSA-N"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="meta_tg_plasma" sboTerm="SBO:0000247" id="tg_plasma" name="tg_plasma" compartment="plasma" initialConcentration="0" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_tg_plasma">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/SBO:0000247"/>
+                  <rdf:li rdf:resource="http://identifiers.org/CHEBI:6904"/>
+                  <rdf:li rdf:resource="http://identifiers.org/ncit/C61845"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchikey/IUBSYMUCCVWXPE-UHFFFAOYSA-N"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="meta_test" sboTerm="SBO:0000247" id="test" name="test" compartment="plasma" initialConcentration="0" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_test">
               <bqbiol:is>
                 <rdf:Bag>
                   <rdf:li rdf:resource="http://identifiers.org/SBO:0000247"/>
@@ -899,81 +1011,6 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </parameter>
-      <parameter metaid="meta_g_gut" id="g_gut" value="0" constant="false">
-        <annotation>
-          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
-            <rdf:Description rdf:about="#meta_g_gut">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="http://identifiers.org/CHEBI:6904"/>
-                  <rdf:li rdf:resource="http://identifiers.org/ncit/C61845"/>
-                  <rdf:li rdf:resource="http://identifiers.org/inchikey/IUBSYMUCCVWXPE-UHFFFAOYSA-N"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
-          </rdf:RDF>
-        </annotation>
-      </parameter>
-      <parameter metaid="meta_i_intestitial" id="i_intestitial" value="0" constant="false">
-        <annotation>
-          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
-            <rdf:Description rdf:about="#meta_i_intestitial">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="http://identifiers.org/CHEBI:6904"/>
-                  <rdf:li rdf:resource="http://identifiers.org/ncit/C61845"/>
-                  <rdf:li rdf:resource="http://identifiers.org/inchikey/IUBSYMUCCVWXPE-UHFFFAOYSA-N"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
-          </rdf:RDF>
-        </annotation>
-      </parameter>
-      <parameter metaid="meta_tg_gut" id="tg_gut" name="tg_gut" value="0" constant="false">
-        <annotation>
-          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
-            <rdf:Description rdf:about="#meta_tg_gut">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="http://identifiers.org/CHEBI:6904"/>
-                  <rdf:li rdf:resource="http://identifiers.org/ncit/C61845"/>
-                  <rdf:li rdf:resource="http://identifiers.org/inchikey/IUBSYMUCCVWXPE-UHFFFAOYSA-N"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
-          </rdf:RDF>
-        </annotation>
-      </parameter>
-      <parameter metaid="meta_tg_delay1" id="tg_delay1" name="tg_delay1" value="0" constant="false">
-        <annotation>
-          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
-            <rdf:Description rdf:about="#meta_tg_delay1">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="http://identifiers.org/CHEBI:6904"/>
-                  <rdf:li rdf:resource="http://identifiers.org/ncit/C61845"/>
-                  <rdf:li rdf:resource="http://identifiers.org/inchikey/IUBSYMUCCVWXPE-UHFFFAOYSA-N"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
-          </rdf:RDF>
-        </annotation>
-      </parameter>
-      <parameter metaid="meta_tg_delay2" id="tg_delay2" name="tg_delay2" value="0" constant="false">
-        <annotation>
-          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
-            <rdf:Description rdf:about="#meta_tg_delay2">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="http://identifiers.org/CHEBI:6904"/>
-                  <rdf:li rdf:resource="http://identifiers.org/ncit/C61845"/>
-                  <rdf:li rdf:resource="http://identifiers.org/inchikey/IUBSYMUCCVWXPE-UHFFFAOYSA-N"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
-          </rdf:RDF>
-        </annotation>
-      </parameter>
       <parameter id="VG" name="VG" value="NaN" units="dimensionless" constant="false"/>
       <parameter id="VTG" name="VTG" value="NaN" units="dimensionless" constant="false"/>
       <parameter id="G_meal" name="glucose_from_meal" value="NaN" units="dimensionless" constant="false"/>
@@ -994,10 +1031,9 @@ FOR A PARTICULAR PURPOSE.</p></body>
       <parameter id="I_integral" name="I_integral" value="NaN" units="dimensionless" constant="false"/>
       <parameter id="I_derivative" name="I_derivative" value="NaN" units="dimensionless" constant="false"/>
       <parameter id="I_pnc" name="I_pnc" value="NaN" units="dimensionless" constant="false"/>
-      <parameter id="basal_rate" name="I_pnc" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="basal_rate" name="basal_rate" value="NaN" units="dimensionless" constant="false"/>
       <parameter id="I_liv" name="I_liv" value="NaN" units="dimensionless" constant="false"/>
       <parameter id="I_int" name="I_int" value="NaN" units="dimensionless" constant="false"/>
-      <parameter id="appearance" name="Insulin appearance" value="NaN" units="dimensionless" constant="false"/>
       <parameter id="degradation" name="Insulin degradation" value="NaN" units="dimensionless" constant="false"/>
       <parameter id="LPL_lipolysis" name="LPL_lipolysis" value="NaN" units="dimensionless" constant="false"/>
       <parameter id="fractional_spillover" name="fractional_spillover" value="NaN" units="dimensionless" constant="false"/>
@@ -1411,7 +1447,10 @@ FOR A PARTICULAR PURPOSE.</p></body>
             <times/>
             <ci> k8 </ci>
             <ci> tau_d </ci>
-            <ci> g_plasma </ci>
+            <apply>
+              <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/rateOf"> rateOf </csymbol>
+              <ci> g_plasma </ci>
+            </apply>
           </apply>
         </math>
       </assignmentRule>
@@ -1423,7 +1462,6 @@ FOR A PARTICULAR PURPOSE.</p></body>
               <plus/>
               <ci> I_proportional </ci>
               <ci> I_integral </ci>
-              <ci> I_derivative </ci>
             </apply>
             <ci> fI </ci>
           </apply>
@@ -1485,19 +1523,6 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </apply>
         </math>
       </rateRule>
-      <assignmentRule variable="appearance">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
-          <apply>
-            <times/>
-            <ci> k9 </ci>
-            <apply>
-              <minus/>
-              <ci> I_PL </ci>
-              <ci> I_pl_b </ci>
-            </apply>
-          </apply>
-        </math>
-      </assignmentRule>
       <assignmentRule variable="degradation">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
@@ -1511,7 +1536,7 @@ FOR A PARTICULAR PURPOSE.</p></body>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
             <minus/>
-            <ci> appearance </ci>
+            <ci> I_int </ci>
             <ci> degradation </ci>
           </apply>
         </math>
@@ -1734,10 +1759,10 @@ FOR A PARTICULAR PURPOSE.</p></body>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
             <minus/>
-            <ci> mG </ci>
+            <ci> k16 </ci>
             <apply>
               <times/>
-              <ci> mTG </ci>
+              <ci> k15 </ci>
               <apply>
                 <minus/>
                 <ci> i_delay3 </ci>
@@ -1773,7 +1798,7 @@ FOR A PARTICULAR PURPOSE.</p></body>
       </rateRule>
     </listOfRules>
     <comp:listOfPorts>
-      <comp:port metaid="Vext_port" sboTerm="SBO:0000599" comp:idRef="Vext" comp:id="Vext_port" comp:name="Port of Vext"/>
+      <comp:port metaid="gut_port" sboTerm="SBO:0000599" comp:idRef="gut" comp:id="gut_port" comp:name="Port of gut"/>
     </comp:listOfPorts>
   </model>
 </sbml>
