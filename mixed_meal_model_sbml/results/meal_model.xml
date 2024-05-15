@@ -143,6 +143,12 @@ FOR A PARTICULAR PURPOSE.</p></body>
           <unit kind="gram" exponent="1" scale="0" multiplier="3.47e-05"/>
         </listOfUnits>
       </unitDefinition>
+      <unitDefinition id="micro_iu_insulin_per_ml" name="34.7*μg/ml">
+        <listOfUnits>
+          <unit kind="gram" exponent="1" scale="0" multiplier="3.47e-05"/>
+          <unit kind="litre" exponent="-1" scale="0" multiplier="0.001"/>
+        </listOfUnits>
+      </unitDefinition>
       <unitDefinition id="micro_iu_insulin_rate" name="34.7*μg/(180*μg*min)">
         <listOfUnits>
           <unit kind="second" exponent="-1" scale="0" multiplier="11.5666666666667"/>
@@ -185,15 +191,38 @@ FOR A PARTICULAR PURPOSE.</p></body>
           <unit kind="mole" exponent="1" scale="0" multiplier="0.001"/>
         </listOfUnits>
       </unitDefinition>
+      <unitDefinition id="mmole_glucose" name="180*μg*1000">
+        <listOfUnits>
+          <unit kind="gram" exponent="1" scale="0" multiplier="0.18"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="mmole_glucose_min" name="180*μg*1000*min">
+        <listOfUnits>
+          <unit kind="gram" exponent="1" scale="0" multiplier="0.18"/>
+          <unit kind="second" exponent="1" scale="0" multiplier="60"/>
+        </listOfUnits>
+      </unitDefinition>
       <unitDefinition id="mmole_glucose_per_l" name="180*μg*1000/liter">
         <listOfUnits>
           <unit kind="gram" exponent="1" scale="0" multiplier="0.18"/>
           <unit kind="litre" exponent="-1" scale="0" multiplier="1"/>
         </listOfUnits>
       </unitDefinition>
-      <unitDefinition id="mmole_glucose_per_l_min" name="180*μg*1000/(liter*min)">
+      <unitDefinition id="mmole_glucose_per_l_min" name="(180*μg*1000*min)/liter">
         <listOfUnits>
           <unit kind="gram" exponent="1" scale="0" multiplier="0.18"/>
+          <unit kind="second" exponent="1" scale="0" multiplier="60"/>
+          <unit kind="litre" exponent="-1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="mmole_nefa" name="213.32*μg*1000">
+        <listOfUnits>
+          <unit kind="gram" exponent="1" scale="0" multiplier="0.21332"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="mmole_nefa_per_l" name="213.32*μg*1000/(liter*min)">
+        <listOfUnits>
+          <unit kind="gram" exponent="1" scale="0" multiplier="0.21332"/>
           <unit kind="litre" exponent="-1" scale="0" multiplier="1"/>
           <unit kind="second" exponent="-1" scale="0" multiplier="60"/>
         </listOfUnits>
@@ -224,11 +253,27 @@ FOR A PARTICULAR PURPOSE.</p></body>
           <unit kind="litre" exponent="-1" scale="0" multiplier="0.001"/>
         </listOfUnits>
       </unitDefinition>
+      <unitDefinition id="mmole_tg" name="176.12*μg*1000">
+        <listOfUnits>
+          <unit kind="gram" exponent="1" scale="0" multiplier="0.17612"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="mmole_tg_per_l" name="176.12*μg*1000/(liter)">
+        <listOfUnits>
+          <unit kind="gram" exponent="1" scale="0" multiplier="0.17612"/>
+          <unit kind="litre" exponent="-1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
       <unitDefinition id="mmole_tg_per_l_min" name="176.12*μg*1000/(liter*min)">
         <listOfUnits>
           <unit kind="gram" exponent="1" scale="0" multiplier="0.17612"/>
           <unit kind="litre" exponent="-1" scale="0" multiplier="1"/>
           <unit kind="second" exponent="-1" scale="0" multiplier="60"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="nano_iu_insulin" name="34.7*μg/1000">
+        <listOfUnits>
+          <unit kind="gram" exponent="1" scale="0" multiplier="3.47e-08"/>
         </listOfUnits>
       </unitDefinition>
       <unitDefinition id="per_min" name="1/min">
@@ -242,6 +287,11 @@ FOR A PARTICULAR PURPOSE.</p></body>
           <unit kind="mole" exponent="1" scale="0" multiplier="0.001"/>
           <unit kind="second" exponent="1" scale="0" multiplier="60"/>
           <unit kind="litre" exponent="-1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="volume_distribution" name="1/kilogram^2">
+        <listOfUnits>
+          <unit kind="gram" exponent="-2" scale="0" multiplier="31.6227766016838"/>
         </listOfUnits>
       </unitDefinition>
     </listOfUnitDefinitions>
@@ -278,7 +328,7 @@ FOR A PARTICULAR PURPOSE.</p></body>
       </compartment>
     </listOfCompartments>
     <listOfSpecies>
-      <species metaid="meta_g_gut" sboTerm="SBO:0000247" id="g_gut" compartment="gut" initialConcentration="0" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+      <species metaid="meta_g_gut" sboTerm="SBO:0000247" id="g_gut" name="g_gut" compartment="gut" initialAmount="0" substanceUnits="mg" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_g_gut">
@@ -294,7 +344,7 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </species>
-      <species metaid="meta_g_plasma" sboTerm="SBO:0000247" id="g_plasma" name="g_plasma" compartment="plasma" initialConcentration="0" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+      <species metaid="meta_g_plasma" sboTerm="SBO:0000247" id="g_plasma" name="g_plasma" compartment="plasma" initialConcentration="5" substanceUnits="mmole_glucose" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_g_plasma">
@@ -310,7 +360,7 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </species>
-      <species metaid="meta_g_integral" sboTerm="SBO:0000247" id="g_integral" name="g_integral" compartment="plasma" initialConcentration="0" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+      <species metaid="meta_g_integral" sboTerm="SBO:0000247" id="g_integral" name="g_integral" compartment="plasma" initialConcentration="0" substanceUnits="mmole_glucose_min" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_g_integral">
@@ -326,7 +376,7 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </species>
-      <species metaid="meta_I_PL" sboTerm="SBO:0000247" id="I_PL" name="i_plasma" compartment="plasma" initialConcentration="0" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+      <species metaid="meta_I_PL" sboTerm="SBO:0000247" id="I_PL" name="i_plasma" compartment="plasma" initialConcentration="18" substanceUnits="nano_iu_insulin" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_I_PL">
@@ -342,7 +392,7 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </species>
-      <species metaid="meta_i_intestitial" sboTerm="SBO:0000247" id="i_intestitial" compartment="gut" initialConcentration="0" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+      <species metaid="meta_i_intestitial" sboTerm="SBO:0000247" id="i_intestitial" name="i_intestitial" compartment="gut" initialConcentration="0" substanceUnits="nano_iu_insulin" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_i_intestitial">
@@ -358,7 +408,7 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </species>
-      <species metaid="meta_i_delay1" sboTerm="SBO:0000247" id="i_delay1" name="i_delay1" compartment="plasma" initialConcentration="0" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+      <species metaid="meta_i_delay1" sboTerm="SBO:0000247" id="i_delay1" name="i_delay1" compartment="plasma" initialConcentration="18" substanceUnits="nano_iu_insulin" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_i_delay1">
@@ -374,7 +424,7 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </species>
-      <species metaid="meta_i_delay2" sboTerm="SBO:0000247" id="i_delay2" name="i_delay2" compartment="plasma" initialConcentration="0" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+      <species metaid="meta_i_delay2" sboTerm="SBO:0000247" id="i_delay2" name="i_delay2" compartment="plasma" initialConcentration="18" substanceUnits="nano_iu_insulin" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_i_delay2">
@@ -390,7 +440,7 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </species>
-      <species metaid="meta_i_delay3" sboTerm="SBO:0000247" id="i_delay3" name="i_delay3" compartment="plasma" initialConcentration="0" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+      <species metaid="meta_i_delay3" sboTerm="SBO:0000247" id="i_delay3" name="i_delay3" compartment="plasma" initialConcentration="18" substanceUnits="nano_iu_insulin" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_i_delay3">
@@ -406,7 +456,7 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </species>
-      <species metaid="meta_nefa_plasma" sboTerm="SBO:0000247" id="nefa_plasma" name="nefa_plasma" compartment="plasma" initialConcentration="0" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+      <species metaid="meta_nefa_plasma" sboTerm="SBO:0000247" id="nefa_plasma" name="nefa_plasma" compartment="plasma" initialConcentration="0.33" substanceUnits="mmole_nefa" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_nefa_plasma">
@@ -422,7 +472,7 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </species>
-      <species metaid="meta_tg_gut" sboTerm="SBO:0000247" id="tg_gut" name="tg_gut" compartment="gut" initialConcentration="0" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+      <species metaid="meta_tg_gut" sboTerm="SBO:0000247" id="tg_gut" name="tg_gut" compartment="gut" initialAmount="0" substanceUnits="mg" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_tg_gut">
@@ -470,26 +520,10 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </species>
-      <species metaid="meta_tg_plasma" sboTerm="SBO:0000247" id="tg_plasma" name="tg_plasma" compartment="plasma" initialConcentration="0" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+      <species metaid="meta_tg_plasma" sboTerm="SBO:0000247" id="tg_plasma" name="tg_plasma" compartment="plasma" initialConcentration="1.3" substanceUnits="mmole_tg" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_tg_plasma">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="http://identifiers.org/SBO:0000247"/>
-                  <rdf:li rdf:resource="http://identifiers.org/CHEBI:6904"/>
-                  <rdf:li rdf:resource="http://identifiers.org/ncit/C61845"/>
-                  <rdf:li rdf:resource="http://identifiers.org/inchikey/IUBSYMUCCVWXPE-UHFFFAOYSA-N"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
-          </rdf:RDF>
-        </annotation>
-      </species>
-      <species metaid="meta_test" sboTerm="SBO:0000247" id="test" name="test" compartment="plasma" initialConcentration="0" substanceUnits="mmole" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
-        <annotation>
-          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
-            <rdf:Description rdf:about="#meta_test">
               <bqbiol:is>
                 <rdf:Bag>
                   <rdf:li rdf:resource="http://identifiers.org/SBO:0000247"/>
@@ -738,6 +772,19 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </parameter>
+      <parameter metaid="meta_gamma_sigma" sboTerm="SBO:0000002" id="gamma_sigma" name="gamma_sigma" value="0.887263817503075" units="dimensionless" constant="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_gamma_sigma">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/SBO:0000002"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </parameter>
       <parameter metaid="meta_Km" sboTerm="SBO:0000002" id="Km" name="KM" value="13.2" units="mmole_glucose_per_l" constant="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
@@ -920,7 +967,7 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </parameter>
-      <parameter metaid="meta_fasting_glucose" sboTerm="SBO:0000002" id="fasting_glucose" name="fasting_glucose" value="5" constant="true">
+      <parameter metaid="meta_fasting_glucose" sboTerm="SBO:0000002" id="fasting_glucose" name="fasting_glucose" value="5" units="mmole" constant="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_fasting_glucose">
@@ -933,7 +980,7 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </parameter>
-      <parameter metaid="meta_fasting_insulin" sboTerm="SBO:0000002" id="fasting_insulin" name="fasting_insulin" value="18" constant="true">
+      <parameter metaid="meta_fasting_insulin" sboTerm="SBO:0000002" id="fasting_insulin" name="fasting_insulin" value="18" units="micro_iu_insulin_per_ml" constant="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_fasting_insulin">
@@ -946,7 +993,7 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </parameter>
-      <parameter metaid="meta_fasting_TG" sboTerm="SBO:0000002" id="fasting_TG" name="fasting_TG" value="1.3" constant="true">
+      <parameter metaid="meta_fasting_TG" sboTerm="SBO:0000002" id="fasting_TG" name="fasting_TG" value="1.3" units="mmole" constant="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_fasting_TG">
@@ -959,7 +1006,7 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </parameter>
-      <parameter metaid="meta_fasting_NEFA" sboTerm="SBO:0000002" id="fasting_NEFA" name="fasting_NEFA" value="0.33" constant="true">
+      <parameter metaid="meta_fasting_NEFA" sboTerm="SBO:0000002" id="fasting_NEFA" name="fasting_NEFA" value="0.33" units="mmole" constant="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_fasting_NEFA">
@@ -972,7 +1019,7 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </parameter>
-      <parameter metaid="meta_mG" sboTerm="SBO:0000002" id="mG" name="meals_glucose_mass" value="75000" constant="true">
+      <parameter metaid="meta_mG" sboTerm="SBO:0000002" id="mG" name="meals_glucose_mass" value="75000" units="mg" constant="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_mG">
@@ -985,7 +1032,7 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </parameter>
-      <parameter metaid="meta_mTG" sboTerm="SBO:0000002" id="mTG" name="meals_tg_mass" value="60000" constant="true">
+      <parameter metaid="meta_mTG" sboTerm="SBO:0000002" id="mTG" name="meals_tg_mass" value="60000" units="mg" constant="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_mTG">
@@ -998,7 +1045,7 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </parameter>
-      <parameter metaid="meta_BW" sboTerm="SBO:0000002" id="BW" name="subject_body_mass" value="84.2" constant="true">
+      <parameter metaid="meta_BW" sboTerm="SBO:0000002" id="BW" name="subject_body_mass" value="84.2" units="kilogram" constant="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_BW">
@@ -1011,8 +1058,8 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </parameter>
-      <parameter id="VG" name="VG" value="NaN" units="dimensionless" constant="false"/>
-      <parameter id="VTG" name="VTG" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="VG" name="VG" value="NaN" units="volume_distribution" constant="false"/>
+      <parameter id="VTG" name="VTG" value="NaN" units="volume_distribution" constant="false"/>
       <parameter id="G_meal" name="glucose_from_meal" value="NaN" units="dimensionless" constant="false"/>
       <parameter id="intestinal_absorption" name="intestinal_absorption" value="NaN" units="dimensionless" constant="false"/>
       <parameter id="distribution_volume_correction" name="distribution_volume_correction" value="NaN" units="dimensionless" constant="false"/>
@@ -1029,7 +1076,6 @@ FOR A PARTICULAR PURPOSE.</p></body>
       <parameter id="G_ren" name="G_ren" value="NaN" units="dimensionless" constant="false"/>
       <parameter id="I_proportional" name="I_proportional" value="NaN" units="dimensionless" constant="false"/>
       <parameter id="I_integral" name="I_integral" value="NaN" units="dimensionless" constant="false"/>
-      <parameter id="I_derivative" name="I_derivative" value="NaN" units="dimensionless" constant="false"/>
       <parameter id="I_pnc" name="I_pnc" value="NaN" units="dimensionless" constant="false"/>
       <parameter id="basal_rate" name="basal_rate" value="NaN" units="dimensionless" constant="false"/>
       <parameter id="I_liv" name="I_liv" value="NaN" units="dimensionless" constant="false"/>
@@ -1039,88 +1085,11 @@ FOR A PARTICULAR PURPOSE.</p></body>
       <parameter id="fractional_spillover" name="fractional_spillover" value="NaN" units="dimensionless" constant="false"/>
       <parameter id="spillover" name="spillover" value="NaN" units="dimensionless" constant="false"/>
       <parameter id="adipose_tg_lipolysis" name="adipose_tg_lipolysis" value="NaN" units="dimensionless" constant="false"/>
-      <parameter id="tissue_uptake" name="tissue_uptake" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="tissue_uptake" name="tissue_uptake" value="NaN" units="mmole_nefa_per_l_min" constant="false"/>
       <parameter id="distribution_volume_correction_tg" name="distribution_volume_correction_tg" value="NaN" units="dimensionless" constant="false"/>
       <parameter id="VLDL" name="endogenous secretion of TG" value="NaN" units="dimensionless" constant="false"/>
       <parameter id="TG_gut" name="TG from the gut" value="NaN" units="dimensionless" constant="false"/>
     </listOfParameters>
-    <listOfInitialAssignments>
-      <initialAssignment symbol="G_b">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
-          <ci> fasting_glucose </ci>
-        </math>
-      </initialAssignment>
-      <initialAssignment symbol="I_pl_b">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
-          <ci> fasting_insulin </ci>
-        </math>
-      </initialAssignment>
-      <initialAssignment symbol="g_gut">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
-          <cn type="integer"> 0 </cn>
-        </math>
-      </initialAssignment>
-      <initialAssignment symbol="g_plasma">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
-          <ci> fasting_glucose </ci>
-        </math>
-      </initialAssignment>
-      <initialAssignment symbol="g_integral">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
-          <cn type="integer"> 0 </cn>
-        </math>
-      </initialAssignment>
-      <initialAssignment symbol="I_PL">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
-          <ci> fasting_insulin </ci>
-        </math>
-      </initialAssignment>
-      <initialAssignment symbol="i_intestitial">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
-          <cn type="integer"> 0 </cn>
-        </math>
-      </initialAssignment>
-      <initialAssignment symbol="i_delay1">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
-          <ci> fasting_insulin </ci>
-        </math>
-      </initialAssignment>
-      <initialAssignment symbol="i_delay2">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
-          <ci> fasting_insulin </ci>
-        </math>
-      </initialAssignment>
-      <initialAssignment symbol="i_delay3">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
-          <ci> fasting_insulin </ci>
-        </math>
-      </initialAssignment>
-      <initialAssignment symbol="nefa_plasma">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
-          <ci> fasting_NEFA </ci>
-        </math>
-      </initialAssignment>
-      <initialAssignment symbol="tg_gut">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
-          <cn type="integer"> 0 </cn>
-        </math>
-      </initialAssignment>
-      <initialAssignment symbol="tg_delay1">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
-          <cn type="integer"> 0 </cn>
-        </math>
-      </initialAssignment>
-      <initialAssignment symbol="tg_delay2">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
-          <cn type="integer"> 0 </cn>
-        </math>
-      </initialAssignment>
-      <initialAssignment symbol="tg_plasma">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
-          <ci> fasting_TG </ci>
-        </math>
-      </initialAssignment>
-    </listOfInitialAssignments>
     <listOfRules>
       <assignmentRule variable="VG">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -1202,7 +1171,7 @@ FOR A PARTICULAR PURPOSE.</p></body>
             <apply>
               <divide/>
               <cn type="integer"> 1 </cn>
-              <cn> 0.887263817503075 </cn>
+              <ci> gamma_sigma </ci>
             </apply>
           </apply>
         </math>
@@ -1437,19 +1406,6 @@ FOR A PARTICULAR PURPOSE.</p></body>
               <plus/>
               <ci> g_integral </ci>
               <ci> G_b </ci>
-            </apply>
-          </apply>
-        </math>
-      </assignmentRule>
-      <assignmentRule variable="I_derivative">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
-          <apply>
-            <times/>
-            <ci> k8 </ci>
-            <ci> tau_d </ci>
-            <apply>
-              <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/rateOf"> rateOf </csymbol>
-              <ci> g_plasma </ci>
             </apply>
           </apply>
         </math>
@@ -1705,7 +1661,7 @@ FOR A PARTICULAR PURPOSE.</p></body>
               <apply>
                 <divide/>
                 <cn type="integer"> 1 </cn>
-                <cn> 0.887263817503075 </cn>
+                <ci> gamma_sigma </ci>
               </apply>
             </apply>
             <apply>

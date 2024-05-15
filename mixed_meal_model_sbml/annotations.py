@@ -1,4 +1,4 @@
-from sbmlutils.metadata import *
+from sbmlutils.metadata import BQB
 
 species = {
     "glc": [
