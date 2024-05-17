@@ -20,7 +20,8 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
 ]
 dependencies = [
-    "sbmlutils >= 0.8.7"
+    "sbmlutils >= 0.8.7",
+    "libroadrunner >= 2.5.0"
 ]
 description = "Codebase for generating SBML model of the Mixed Meal Model"
 keywords = [
