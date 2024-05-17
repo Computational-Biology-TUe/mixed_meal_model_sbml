@@ -20,6 +20,11 @@ class U(templates.U):
 
 
 def get_model() -> Model:
+    """Obtain the Model object.
+
+    Returns:
+        Model object.
+    """
     plasma = "plasma"
     gut = "gut"
 
@@ -187,7 +192,8 @@ def get_model() -> Model:
         # k3 rate constant for suppresstion of hepatic glucose release by change of plasma glucose [1/min]
         Parameter("k3", 6.07e-3, name="K3", unit=U.per_min),
 
-        # k4 rate constant for suppression of hepatic glucose release by delayed (remote) insulin [μmolGlucose/(μIU*min)]
+        # k4 rate constant for suppression of hepatic glucose release by delayed (remote)
+        # insulin [μmolGlucose/(μIU*min)]
         Parameter("k4", 2.35e-4, name="K4", unit=U.micro_mole_glucose_rate),
 
         # k5 rate constant for delayed insulin depedent uptake of glucose [μmolGlucose/(μIU*min)],
