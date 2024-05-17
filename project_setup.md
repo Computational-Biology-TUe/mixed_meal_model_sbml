@@ -11,7 +11,6 @@ checklist](https://guide.esciencecenter.nl/#/best_practices/checklist).
 
 This repository is set up with Python versions:
 
-- 3.8
 - 3.9
 - 3.10
 - 3.11
@@ -37,30 +36,9 @@ You can distribute your code using PyPI.
 [The guide](https://guide.esciencecenter.nl/#/best_practices/language_guides/python?id=building-and-packaging-code) can
 help you decide which tool to use for packaging.
 
-## Testing and code coverage
-
-- Tests should be put in the `tests` folder.
-- The `tests` folder contains:
-  - Example tests that you should replace with your own meaningful tests (file: `test_my_module.py`)
-- The testing framework used is [PyTest](https://pytest.org)
-  - [PyTest introduction](https://pythontest.com/pytest-book/)
-  - PyTest is listed as a development dependency
-  - This is configured in `pyproject.toml`
-- The project uses [GitHub action workflows](https://docs.github.com/en/actions) to automatically run tests on GitHub infrastructure against multiple Python versions
-  - Workflows can be found in [`.github/workflows`](.github/workflows/)
-- [Relevant section in the guide](https://guide.esciencecenter.nl/#/best_practices/language_guides/python?id=testing)
-
 ## Documentation
 
-- Documentation should be put in the [`docs/`](docs/) directory. The contents have been generated using `sphinx-quickstart` (Sphinx version 1.6.5).
-- We recommend writing the documentation using Restructured Text (reST) and Google style docstrings.
-  - [Restructured Text (reST) and Sphinx CheatSheet](https://thomas-cokelaer.info/tutorials/sphinx/rest_syntax.html)
-  - [Google style docstring examples](http://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html).
-- The documentation is set up with the ReadTheDocs Sphinx theme.
-  - Check out its [configuration options](https://sphinx-rtd-theme.readthedocs.io/en/latest/).
-- [AutoAPI](https://sphinx-autoapi.readthedocs.io/) is used to generate documentation for the package Python objects.
-- `.readthedocs.yaml` is the ReadTheDocs configuration file. When ReadTheDocs is building the documentation this package and its development dependencies are installed so the API reference can be rendered.
-- [Relevant section in the guide](https://guide.esciencecenter.nl/#/best_practices/language_guides/python?id=writingdocumentation)
+The documentation is contained in the [README.md](README.md) file
 
 ## Coding style conventions and code quality
 
