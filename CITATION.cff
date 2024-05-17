@@ -16,6 +16,9 @@ authors:
     family-names: De Rooij
   - given-names: Natal
     family-names: van Riel
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.11210057
 repository-code: >-
   https://github.com/Computational-Biology-TUe/mixed_meal_model_sbml
 abstract: >-
