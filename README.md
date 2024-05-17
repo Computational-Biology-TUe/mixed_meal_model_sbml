@@ -8,7 +8,7 @@
 | (2/5) license                      | [![github license badge](https://img.shields.io/github/license/Computational-Biology-TUe/mixed_meal_model_sbml)](https://github.com/Computational-Biology-TUe/mixed_meal_model_sbml) |
 | (3/5) community registry           | [![RSD](https://img.shields.io/badge/rsd-mixed_meal_model_sbml-00a3e3.svg)](https://research-software-directory.org/software/mixed-meal-model-sbml) |
 | (4/5) citation                     | [![DOI](https://zenodo.org/badge/DOI/<replace-with-created-DOI>.svg)](https://doi.org/<replace-with-created-DOI>) |
-| (5/5) checklist                    | [![workflow cii badge](https://bestpractices.coreinfrastructure.org/projects/<replace-with-created-project-identifier>/badge)](https://bestpractices.coreinfrastructure.org/projects/<replace-with-created-project-identifier>) |
+| (5/5) checklist                    | [![workflow cii badge](https://bestpractices.coreinfrastructure.org/projects/8953/badge)](https://bestpractices.coreinfrastructure.org/projects/8953) |
 | howfairis                          | [![fair-software badge](https://img.shields.io/badge/fair--software.eu-%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8B-yellow)](https://fair-software.eu) |
 | **GitHub Actions**                 | &nbsp; |
 | Build                              | [![build](https://github.com/Computational-Biology-TUe/mixed_meal_model_sbml/actions/workflows/build.yml/badge.svg)](https://github.com/Computational-Biology-TUe/mixed_meal_model_sbml/actions/workflows/build.yml) |
