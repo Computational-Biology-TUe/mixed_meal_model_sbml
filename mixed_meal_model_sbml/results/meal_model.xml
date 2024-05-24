@@ -10,7 +10,10 @@
   <model metaid="meta_meal_model" id="meal_model" name="Meal model" substanceUnits="mmole" timeUnits="min" volumeUnits="litre" areaUnits="m2" lengthUnits="metre" extentUnits="mmole">
     <notes>
       <body xmlns="http://www.w3.org/1999/xhtml">
-        <h1>Meal model</h1>
+        <pre>
+          <code># Meal model
+</code>
+        </pre>
         <h2>Terms of use</h2>
         <p>The content of this model has been carefully created in a manual research effort.
 This file has been created by <a href="https://livermetabolism.com">Matthias König</a>
@@ -1090,6 +1093,53 @@ FOR A PARTICULAR PURPOSE.</p></body>
       <parameter id="VLDL" name="endogenous secretion of TG" value="NaN" units="dimensionless" constant="false"/>
       <parameter id="TG_gut" name="TG from the gut" value="NaN" units="dimensionless" constant="false"/>
     </listOfParameters>
+    <listOfInitialAssignments>
+      <initialAssignment symbol="G_b">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> fasting_glucose </ci>
+        </math>
+      </initialAssignment>
+      <initialAssignment symbol="I_pl_b">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> fasting_insulin </ci>
+        </math>
+      </initialAssignment>
+      <initialAssignment symbol="g_plasma">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> fasting_glucose </ci>
+        </math>
+      </initialAssignment>
+      <initialAssignment symbol="I_PL">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> fasting_insulin </ci>
+        </math>
+      </initialAssignment>
+      <initialAssignment symbol="i_delay1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> fasting_insulin </ci>
+        </math>
+      </initialAssignment>
+      <initialAssignment symbol="i_delay2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> fasting_insulin </ci>
+        </math>
+      </initialAssignment>
+      <initialAssignment symbol="i_delay3">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> fasting_insulin </ci>
+        </math>
+      </initialAssignment>
+      <initialAssignment symbol="nefa_plasma">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> fasting_NEFA </ci>
+        </math>
+      </initialAssignment>
+      <initialAssignment symbol="tg_plasma">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> fasting_TG </ci>
+        </math>
+      </initialAssignment>
+    </listOfInitialAssignments>
     <listOfRules>
       <assignmentRule variable="VG">
         <math xmlns="http://www.w3.org/1998/Math/MathML">

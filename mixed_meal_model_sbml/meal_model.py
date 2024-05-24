@@ -4,6 +4,7 @@ from sbmlutils.examples.templates import terms_of_use
 from sbmlutils.factory import AssignmentRule
 from sbmlutils.factory import Compartment
 from sbmlutils.factory import Function
+from sbmlutils.factory import InitialAssignment
 from sbmlutils.factory import Model
 from sbmlutils.factory import Parameter
 from sbmlutils.factory import RateRule
@@ -287,6 +288,17 @@ def get_model() -> Model:
         # custom functions
         # return 1 if the first argument is bigger than the second, 0 otherwise
         Function("thresholding", name="thresholding", value="lambda(x,y, piecewise(1,gt(x,y),0))"),
+
+        # initial assignments
+        InitialAssignment("G_b", value="fasting_glucose"),
+        InitialAssignment("I_pl_b", value="fasting_insulin"),
+        InitialAssignment("g_plasma", value="fasting_glucose"),
+        InitialAssignment("I_PL", value="fasting_insulin"),
+        InitialAssignment("i_delay1", value="fasting_insulin"),
+        InitialAssignment("i_delay2", value="fasting_insulin"),
+        InitialAssignment("i_delay3", value="fasting_insulin"),
+        InitialAssignment("nefa_plasma", value="fasting_NEFA"),
+        InitialAssignment("tg_plasma", value="fasting_TG"),
 
         AssignmentRule("VG", name="VG", value="(260/sqrt(BW/70))/1000", unit=U.volume_distribution),
         AssignmentRule("VTG", name="VTG", value="(70/sqrt(BW/70))/1000", unit=U.volume_distribution),
