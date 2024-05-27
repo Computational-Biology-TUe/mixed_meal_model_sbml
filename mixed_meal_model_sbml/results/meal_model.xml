@@ -1092,6 +1092,13 @@ FOR A PARTICULAR PURPOSE.</p></body>
       <parameter id="distribution_volume_correction_tg" name="distribution_volume_correction_tg" value="NaN" units="dimensionless" constant="false"/>
       <parameter id="VLDL" name="endogenous secretion of TG" value="NaN" units="dimensionless" constant="false"/>
       <parameter id="TG_gut" name="TG from the gut" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="glucose_plasma_flux" name="glucose_plasma_flux" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="hepatic_glucose_flux" name="hepatic_glucose_flux" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="glucose_uptake_ii" name="glucose uptake into tissue insulin independent" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="glucose_uptake_id" name="glucose uptake into tissue insulin dependent" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="glucose_uptake" name="glucose uptake" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="tg_plasma_flux" name="tg flux from the gut into the plasma" value="NaN" units="dimensionless" constant="false"/>
+      <parameter id="hepatic_tg_flux" name="hepatic tg flux (VLDL)" value="NaN" units="dimensionless" constant="false"/>
     </listOfParameters>
     <listOfInitialAssignments>
       <initialAssignment symbol="G_b">
@@ -1802,6 +1809,144 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </apply>
         </math>
       </rateRule>
+      <assignmentRule variable="glucose_plasma_flux">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> k2 </ci>
+                <ci> fG </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> BW </ci>
+                <ci> VG </ci>
+              </apply>
+            </apply>
+            <ci> g_gut </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="hepatic_glucose_flux">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <minus/>
+              <ci> G_liv_b </ci>
+              <apply>
+                <times/>
+                <ci> k4 </ci>
+                <ci> fI </ci>
+                <ci> i_intestitial </ci>
+              </apply>
+            </apply>
+            <apply>
+              <times/>
+              <ci> k3 </ci>
+              <apply>
+                <minus/>
+                <ci> g_plasma </ci>
+                <ci> G_b </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="glucose_uptake_ii">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> G_liv_b </ci>
+              <apply>
+                <plus/>
+                <ci> Km </ci>
+                <ci> G_b </ci>
+              </apply>
+              <ci> g_plasma </ci>
+            </apply>
+            <apply>
+              <times/>
+              <ci> G_b </ci>
+              <apply>
+                <plus/>
+                <ci> Km </ci>
+                <ci> g_plasma </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="glucose_uptake_id">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> i_intestitial </ci>
+            <ci> g_plasma </ci>
+            <apply>
+              <divide/>
+              <ci> k5 </ci>
+              <apply>
+                <plus/>
+                <ci> Km </ci>
+                <ci> g_plasma </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="glucose_uptake">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <ci> glucose_uptake_ii </ci>
+            <ci> glucose_uptake_id </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="tg_plasma_flux">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> k14 </ci>
+                <ci> fTG </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> BW </ci>
+                <ci> VTG </ci>
+              </apply>
+            </apply>
+            <ci> tg_delay2 </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="hepatic_tg_flux">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <ci> k16 </ci>
+            <apply>
+              <times/>
+              <ci> k15 </ci>
+              <apply>
+                <minus/>
+                <ci> i_delay3 </ci>
+                <ci> I_pl_b </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
     </listOfRules>
     <comp:listOfPorts>
       <comp:port metaid="gut_port" sboTerm="SBO:0000599" comp:idRef="gut" comp:id="gut_port" comp:name="Port of gut"/>

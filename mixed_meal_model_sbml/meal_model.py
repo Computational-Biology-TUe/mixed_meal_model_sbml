@@ -524,6 +524,40 @@ def get_model() -> Model:
                  name="plasma_tg_flux",
                  value="VLDL+TG_gut-LPL_lipolysis"),
 
+        # model outputs
+
+        # glucose flux from the gut into the plasma
+        AssignmentRule("glucose_plasma_flux",
+                       name="glucose_plasma_flux",
+                       value="(k2*fG/(BW*VG))*g_gut"),
+
+        # hepatic glucose flux
+        AssignmentRule("hepatic_glucose_flux",
+                       name="hepatic_glucose_flux",
+                       value="G_liv_b-(k4*fI)*i_intestitial-k3*(g_plasma-G_b)"),
+
+        # glucose uptake into tissue
+        AssignmentRule("glucose_uptake_ii",
+                       name="glucose uptake into tissue insulin independent",
+                       value="G_liv_b*((Km+G_b)*g_plasma)/(G_b*(Km+g_plasma))"),
+
+        AssignmentRule("glucose_uptake_id",
+                       name="glucose uptake into tissue insulin dependent",
+                       value="i_intestitial*g_plasma*(k5/(Km+g_plasma))"),
+
+        AssignmentRule("glucose_uptake",
+                       name="glucose uptake",
+                       value="glucose_uptake_ii+glucose_uptake_id"),
+
+        # tg flux from the gut into the plasma
+        AssignmentRule("tg_plasma_flux",
+                       name="tg flux from the gut into the plasma",
+                       value="(k14*fTG/(BW*VTG))*tg_delay2"),
+
+        # hepatic tg flux (VLDL)
+        AssignmentRule("hepatic_tg_flux",
+                       name="hepatic tg flux (VLDL)",
+                       value="k16-k15*(i_delay3-I_pl_b)"),
     ]
 
     return _m
