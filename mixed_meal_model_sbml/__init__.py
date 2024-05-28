@@ -20,7 +20,7 @@ OUTPUT_PARAMETERS = [
     "tg_plasma_flux",
     "hepatic_tg_flux",
     "[tg_plasma]",
-    "[nefa_plasma]"
+    "[nefa_plasma]",
 ]
 
 
@@ -35,13 +35,15 @@ def create_sbml_model(save_location: Path = MODEL_PATH) -> FactoryResult:
 
     """
     return create_model(
-        filepath=save_location, model=meal_model.get_model(),
-        validation_options=ValidationOptions(units_consistency=True, modeling_practice=False)
+        filepath=save_location,
+        model=meal_model.get_model(),
+        validation_options=ValidationOptions(units_consistency=True, modeling_practice=False),
     )
 
 
-def run_simulation(sbml_path: Path, start_time: int, end_time: int,
-                   steps_number: int, outputs: list[str]=OUTPUT_PARAMETERS) -> pd.DataFrame:
+def run_simulation(
+    sbml_path: Path, start_time: int, end_time: int, steps_number: int, outputs: list[str] = OUTPUT_PARAMETERS
+) -> pd.DataFrame:
     """Run the simulation of the model.
 
     Args:

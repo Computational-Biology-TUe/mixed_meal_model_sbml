@@ -1,16 +1,17 @@
 import base64
+import math
+import pandas as pd
+import plotly.graph_objects as go
 import roadrunner
 from dash import Input
 from dash import Output
 from dash import State
 from dash import callback
+from libsbml import Model
+from libsbml import readSBMLFromString
+from plotly.subplots import make_subplots
 import meal_model_dashboard.definitions.element_ids as ids
 import meal_model_dashboard.definitions.layout_styles as styles
-from plotly.subplots import make_subplots
-import plotly.graph_objects as go
-import pandas as pd
-import math
-from libsbml import readSBMLFromString, Model
 import mixed_meal_model_sbml as mm
 
 model_rr: roadrunner.RoadRunner
@@ -18,8 +19,8 @@ model: Model
 
 
 @callback(
-    Output(ids.RUN_SIMULATION_BUTTON, 'disabled'),
-    Input(ids.UPLOAD_MODEL, 'contents'),
+    Output(ids.RUN_SIMULATION_BUTTON, "disabled"),
+    Input(ids.UPLOAD_MODEL, "contents"),
     prevent_initial_call=True,
 )
 def load_sbml(content):
@@ -28,9 +29,9 @@ def load_sbml(content):
     global model
     run_btn_disabled = True
 
-    content_type, content_string = content.split(',')
+    content_type, content_string = content.split(",")
 
-    if content_type == 'data:text/xml;base64':
+    if content_type == "data:text/xml;base64":
         model_raw = base64.b64decode(content_string).decode("utf-8")
         model_rr = roadrunner.RoadRunner(model_raw)
         model = readSBMLFromString(model_raw).getModel()
@@ -47,24 +48,26 @@ def load_sbml(content):
     Output(ids.FASTING_TG_INPUT, "value"),
     Output(ids.MEAL_GLUCOSE_INPUT, "value"),
     Output(ids.MEAL_TG_INPUT, "value"),
-    Input(ids.RUN_SIMULATION_BUTTON, 'disabled'),
+    Input(ids.RUN_SIMULATION_BUTTON, "disabled"),
     prevent_initial_call=True,
 )
 def populate_params(_):
     """Callback fo populating the params inputs with the default values found in the model."""
-    return (model_rr["BW"],
-            model_rr["fasting_glucose"],
-            model_rr["fasting_insulin"],
-            model_rr["fasting_NEFA"],
-            model_rr["fasting_TG"],
-            model_rr["mG"],
-            model_rr["mTG"])
+    return (
+        model_rr["BW"],
+        model_rr["fasting_glucose"],
+        model_rr["fasting_insulin"],
+        model_rr["fasting_NEFA"],
+        model_rr["fasting_TG"],
+        model_rr["mG"],
+        model_rr["mTG"],
+    )
 
 
 @callback(
     Output(ids.RESULTS_PLOTS, "figure"),
     Output(ids.RESULTS_PLOTS, "style"),
-    Input(ids.RUN_SIMULATION_BUTTON, 'n_clicks'),
+    Input(ids.RUN_SIMULATION_BUTTON, "n_clicks"),
     State(ids.BODY_MASS_INPUT, "value"),
     State(ids.FASTING_GLUCOSE_INPUT, "value"),
     State(ids.FASTING_INSULIN_INPUT, "value"),
@@ -77,17 +80,19 @@ def populate_params(_):
     State(ids.STEPS_TIME_INPUT, "value"),
     prevent_initial_call=True,
 )
-def run_simulation(_,
-                   body_mass,
-                   fasting_glucose,
-                   fasting_insulin,
-                   fasting_nefa,
-                   fasting_tg,
-                   meal_glucose,
-                   meal_tg,
-                   start_time,
-                   stop_time,
-                   steps):
+def run_simulation(
+    _,
+    body_mass,
+    fasting_glucose,
+    fasting_insulin,
+    fasting_nefa,
+    fasting_tg,
+    meal_glucose,
+    meal_tg,
+    start_time,
+    stop_time,
+    steps,
+):
     """Run the simulation using the set parameters."""
     global model_rr
 
@@ -99,10 +104,7 @@ def run_simulation(_,
     model_rr["mG"] = meal_glucose
     model_rr["mTG"] = meal_tg
 
-    _s = model_rr.simulate(start=start_time,
-                           end=stop_time,
-                           steps=steps,
-                           selections=mm.OUTPUT_PARAMETERS)
+    _s = model_rr.simulate(start=start_time, end=stop_time, steps=steps, selections=mm.OUTPUT_PARAMETERS)
 
     df = pd.DataFrame(_s, columns=_s.colnames)
 
@@ -112,16 +114,14 @@ def run_simulation(_,
 
 
 def plot_results(df: pd.DataFrame, model_sbml: Model) -> go.Figure:
-
+    """Plot the results of the simulation."""
     columns_n = 3
-    rows_n = df.shape[1]//columns_n
+    rows_n = df.shape[1] // columns_n
     model_outputs = list(df.columns)
 
-    fig = make_subplots(rows=rows_n, cols=3,
-                        subplot_titles=model_outputs)
+    fig = make_subplots(rows=rows_n, cols=3, subplot_titles=model_outputs)
 
     for n, output in enumerate(model_outputs, start=1):
-
         output_clean = output.replace("[", "").replace("]", "")
 
         param = model_sbml.parameters.getElementBySId(output_clean)
@@ -139,20 +139,14 @@ def plot_results(df: pd.DataFrame, model_sbml: Model) -> go.Figure:
             print("None found")
             unit = ""
 
-        row = math.ceil(n/columns_n)
-        col = n-(row*columns_n)+columns_n
-        fig.add_trace(
-            go.Scatter(y=df[output]),
-            row=row,
-            col=col
-        )
+        row = math.ceil(n / columns_n)
+        col = n - (row * columns_n) + columns_n
+        fig.add_trace(go.Scatter(y=df[output]), row=row, col=col)
 
         fig.update_xaxes(title_text="time [min]", row=row, col=col)
         fig.update_yaxes(title_text=unit, row=row, col=col)
-        fig.layout.annotations[n-1].update(text=param.name)
+        fig.layout.annotations[n - 1].update(text=param.name)
 
-    fig.update_layout(height=1500, width=1500,
-                      title_text="Simulation output",
-                      showlegend=False)
+    fig.update_layout(height=1500, width=1500, title_text="Simulation output", showlegend=False)
 
     return fig

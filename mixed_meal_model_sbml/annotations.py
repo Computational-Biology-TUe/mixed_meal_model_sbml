@@ -21,7 +21,7 @@ species = {
         (BQB.IS, "ncit/C61845"),
         (BQB.IS, "inchikey/IUBSYMUCCVWXPE-UHFFFAOYSA-N"),
     ],
-    "met": [ # TODO: change
+    "met": [  # TODO: change
         (BQB.IS, "chebi/CHEBI:6904"),
         (BQB.IS, "ncit/C61845"),
         (BQB.IS, "inchikey/IUBSYMUCCVWXPE-UHFFFAOYSA-N"),
@@ -30,7 +30,7 @@ species = {
 
 
 compartments = {
-    "plasma": [ # TODO: check and add(?)
+    "plasma": [  # TODO: check and add(?)
         (BQB.IS, "ncit/C13356"),
     ],
     "gut": [  # TODO: change
