@@ -5,11 +5,16 @@ from dash import Output
 from dash import State
 from dash import callback
 import meal_model_dashboard.definitions.element_ids as ids
+import meal_model_dashboard.definitions.layout_styles as styles
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 import pandas as pd
+import math
+from libsbml import readSBMLFromString, Model
+import mixed_meal_model_sbml as mm
 
 model_rr: roadrunner.RoadRunner
+model: Model
 
 
 @callback(
@@ -20,13 +25,15 @@ model_rr: roadrunner.RoadRunner
 def load_sbml(content):
     """Callback for file loading."""
     global model_rr
+    global model
     run_btn_disabled = True
 
     content_type, content_string = content.split(',')
 
     if content_type == 'data:text/xml;base64':
-        model = base64.b64decode(content_string).decode("utf-8")
-        model_rr = roadrunner.RoadRunner(model)
+        model_raw = base64.b64decode(content_string).decode("utf-8")
+        model_rr = roadrunner.RoadRunner(model_raw)
+        model = readSBMLFromString(model_raw).getModel()
         run_btn_disabled = False
 
     return run_btn_disabled
@@ -56,6 +63,7 @@ def populate_params(_):
 
 @callback(
     Output(ids.RESULTS_PLOTS, "figure"),
+    Output(ids.RESULTS_PLOTS, "style"),
     Input(ids.RUN_SIMULATION_BUTTON, 'n_clicks'),
     State(ids.BODY_MASS_INPUT, "value"),
     State(ids.FASTING_GLUCOSE_INPUT, "value"),
@@ -92,78 +100,59 @@ def run_simulation(_,
     model_rr["mTG"] = meal_tg
 
     _s = model_rr.simulate(start=start_time,
-                      end=stop_time,
-                      steps=steps)
+                           end=stop_time,
+                           steps=steps,
+                           selections=mm.OUTPUT_PARAMETERS)
 
     df = pd.DataFrame(_s, columns=_s.colnames)
 
-    fig = make_subplots(rows=7, cols=3)
+    fig = plot_results(df, model)
 
-    fig.add_trace(
-        go.Scatter(y=df["[g_gut]"]),
-        row=1, col=1
-    )
+    return fig, styles.GRAPH
 
-    fig.add_trace(
-        go.Scatter(y=df["[g_plasma]"]),
-        row=1, col=2
-    )
 
-    fig.add_trace(
-        go.Scatter(y=df["[g_integral]"]),
-        row=1, col=3
-    )
+def plot_results(df: pd.DataFrame, model_sbml: Model) -> go.Figure:
 
-    fig.add_trace(
-        go.Scatter(y=df["[I_PL]"]),
-        row=2, col=1
-    )
+    columns_n = 3
+    rows_n = df.shape[1]//columns_n
+    model_outputs = list(df.columns)
 
-    fig.add_trace(
-        go.Scatter(y=df["[i_intestitial]"]),
-        row=2, col=2
-    )
+    fig = make_subplots(rows=rows_n, cols=3,
+                        subplot_titles=model_outputs)
 
-    fig.add_trace(
-        go.Scatter(y=df["[i_delay1]"]),
-        row=2, col=3
-    )
+    for n, output in enumerate(model_outputs, start=1):
 
-    fig.add_trace(
-        go.Scatter(y=df["[i_delay2]"]),
-        row=3, col=1
-    )
+        output_clean = output.replace("[", "").replace("]", "")
 
-    fig.add_trace(
-        go.Scatter(y=df["[i_delay3]"]),
-        row=3, col=2
-    )
+        param = model_sbml.parameters.getElementBySId(output_clean)
+        extra = ""
+        if not param:
+            # species have to be reported as concentration
+            param = model_sbml.species.getElementBySId(output_clean)
+            extra = "/liter"
 
-    fig.add_trace(
-        go.Scatter(y=df["[nefa_plasma]"]),
-        row=3, col=3
-    )
+        try:
+            unit = model_sbml.getUnitDefinition(param.getUnits()).name
+            unit = f"{unit}{extra}"
 
-    fig.add_trace(
-        go.Scatter(y=df["[tg_gut]"]),
-        row=4, col=1
-    )
+        except AttributeError:
+            print("None found")
+            unit = ""
 
-    fig.add_trace(
-        go.Scatter(y=df["[tg_delay1]"]),
-        row=4, col=2
-    )
+        row = math.ceil(n/columns_n)
+        col = n-(row*columns_n)+columns_n
+        fig.add_trace(
+            go.Scatter(y=df[output]),
+            row=row,
+            col=col
+        )
 
-    fig.add_trace(
-        go.Scatter(y=df["[tg_delay2]"]),
-        row=4, col=3
-    )
+        fig.update_xaxes(title_text="time [min]", row=row, col=col)
+        fig.update_yaxes(title_text=unit, row=row, col=col)
+        fig.layout.annotations[n-1].update(text=param.name)
 
-    fig.add_trace(
-        go.Scatter(y=df["[tg_plasma]"]),
-        row=5, col=1
-    )
+    fig.update_layout(height=1500, width=1500,
+                      title_text="Simulation output",
+                      showlegend=False)
 
     return fig
-
-

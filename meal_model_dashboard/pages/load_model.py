@@ -103,7 +103,7 @@ model_upload = html.Div([
     dbc.Row([
         dbc.Button("RUN SIMULATION", id=ids.RUN_SIMULATION_BUTTON, disabled=True),
     ]),
-    dcc.Graph(id=ids.RESULTS_PLOTS),
+    dcc.Graph(id=ids.RESULTS_PLOTS, style=styles.EMPTY_ELEMENT),
     html.Div([], id="test"),
 ])
 
