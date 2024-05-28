@@ -49,17 +49,16 @@ def get_model() -> Model:
             sboTerm=SBO.PHYSICAL_COMPARTMENT,
             annotations=annotations.compartments["plasma"],
             unit=U.liter,
-            constant=True,
-            # port=True,
+            constant=True
         ),
-        # for now, we leave this compartment out
         Compartment(
             gut,
             4,
             name="gut",
             sboTerm=SBO.PHYSICAL_COMPARTMENT,
             annotations=annotations.compartments["gut"],
-            port=True,
+            unit=U.liter,
+            constant=True
         ),
     ]
 
@@ -76,9 +75,9 @@ def get_model() -> Model:
                 plasma,
                 initialConcentration=5,
                 boundaryCondition=False,
-                name="g_plasma",
+                name="Plasma glucose",
                 annotations=annotations.species["glc"],
-                substanceUnit=U.mmole_glucose),  # du[2] [unit=u"mmolGlucose/l"]
+                substanceUnit=U.mmole),  # du[2] [unit=u"mmolGlucose/l"]
 
         Species("g_integral",
                 plasma,
@@ -92,7 +91,7 @@ def get_model() -> Model:
                 plasma,
                 initialConcentration=18,
                 boundaryCondition=False,
-                name="i_plasma",
+                name="Plasma insulin",
                 annotations=annotations.species["ins"],
                 substanceUnit=U.nano_iu_insulin), # du[4] I_plasma(t), [unit=u"μIU/ml"],
 
@@ -132,9 +131,9 @@ def get_model() -> Model:
                 plasma,
                 initialConcentration=0.33,
                 boundaryCondition=False,
-                name="nefa_plasma",
+                name="Plasma NEFA",
                 annotations=annotations.species["nefa"],
-                substanceUnit=U.mmole_nefa),  # du[9] NEFA_plasma(t), [unit=u"mmolNEFA/l"],
+                substanceUnit=U.mmole),  # du[9] NEFA_plasma(t), [unit=u"mmolNEFA/l"],
 
         Species("tg_gut",
                 gut, initialAmount=0.0,
@@ -161,9 +160,9 @@ def get_model() -> Model:
                 plasma,
                 initialConcentration=1.3,
                 boundaryCondition=False,
-                name="tg_plasma",
+                name="plasma TG",
                 annotations=annotations.species["tg"],
-                substanceUnit=U.mmole_tg), # du[13] TG_plasma(t), [unit=u"mmolTG/l"]
+                substanceUnit=U.mmole), # du[13] TG_plasma(t), [unit=u"mmolTG/l"]
     ]
 
     for s in _m.species:
@@ -267,7 +266,7 @@ def get_model() -> Model:
         # k16 basal secretion of TG from liver [mmolTG/(l*min)]
         Parameter("k16", 0.0119, name="k16", unit=U.mmole_tg_per_l_min),
 
-        # input parameters (for now, test values)
+        # input parameters
         Parameter("fasting_glucose", 5, name="fasting_glucose", unit=U.mmole),
         Parameter("fasting_insulin", 18, name="fasting_insulin", unit=U.micro_iu_insulin_per_ml),
         Parameter("fasting_TG", 1.3, name="fasting_TG", unit=U.mmole),
@@ -528,36 +527,43 @@ def get_model() -> Model:
 
         # glucose flux from the gut into the plasma
         AssignmentRule("glucose_plasma_flux",
-                       name="glucose_plasma_flux",
-                       value="(k2*fG/(BW*VG))*g_gut"),
+                       name="glucose flux from the gut",
+                       value="(k2*fG/(BW*VG))*g_gut",
+                       unit=U.mmole_per_l_min),
 
         # hepatic glucose flux
         AssignmentRule("hepatic_glucose_flux",
-                       name="hepatic_glucose_flux",
-                       value="G_liv_b-(k4*fI)*i_intestitial-k3*(g_plasma-G_b)"),
+                       name="hepatic glucose flux",
+                       value="G_liv_b-(k4*fI)*i_intestitial-k3*(g_plasma-G_b)",
+                       unit=U.mmole_per_l_min),
 
         # glucose uptake into tissue
         AssignmentRule("glucose_uptake_ii",
                        name="glucose uptake into tissue insulin independent",
-                       value="G_liv_b*((Km+G_b)*g_plasma)/(G_b*(Km+g_plasma))"),
+                       value="G_liv_b*((Km+G_b)*g_plasma)/(G_b*(Km+g_plasma))",
+                       unit=U.mmole_per_l_min),
 
         AssignmentRule("glucose_uptake_id",
                        name="glucose uptake into tissue insulin dependent",
-                       value="i_intestitial*g_plasma*(k5/(Km+g_plasma))"),
+                       value="i_intestitial*g_plasma*(k5/(Km+g_plasma))",
+                       unit=U.mmole_per_l_min),
 
         AssignmentRule("glucose_uptake",
                        name="glucose uptake",
-                       value="glucose_uptake_ii+glucose_uptake_id"),
+                       value="glucose_uptake_ii+glucose_uptake_id",
+                       unit=U.mmole_per_l_min),
 
         # tg flux from the gut into the plasma
         AssignmentRule("tg_plasma_flux",
-                       name="tg flux from the gut into the plasma",
-                       value="(k14*fTG/(BW*VTG))*tg_delay2"),
+                       name="TG flux from the gut",
+                       value="(k14*fTG/(BW*VTG))*tg_delay2",
+                       unit=U.mmole_per_l_min),
 
         # hepatic tg flux (VLDL)
         AssignmentRule("hepatic_tg_flux",
-                       name="hepatic tg flux (VLDL)",
-                       value="k16-k15*(i_delay3-I_pl_b)"),
+                       name="hepatic TG flux (VLDL)",
+                       value="k16-k15*(i_delay3-I_pl_b)",
+                       unit=U.mmole_per_l_min),
     ]
 
     return _m

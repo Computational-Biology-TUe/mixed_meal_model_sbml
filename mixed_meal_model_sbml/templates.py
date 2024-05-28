@@ -9,6 +9,8 @@ micro_iu_insulin_def = "34.7*μg"
 micro_mole_nefa_def = "213.32*μg"
 micro_mole_tg_def = "176.12*μg"
 
+nano_iu_insulin_def = "0.0.347*μg"
+
 mmole_glucose_def = f"{micro_mole_glucose_def}*1000"
 mmole_nefa_def = f"{micro_mole_nefa_def}*1000"
 mmole_tg_def = f"{micro_mole_tg_def}*1000"
@@ -58,7 +60,7 @@ class U(Units):
     mmole_nefa_per_l_min = UnitDefinition("mmole_nefa_per_l_min",
                                           f"{mmole_nefa_def}/(liter*min)")  # mmolNEFA/(l*min)
     mmole_per_min = UnitDefinition("mmole_per_min", "mmole/min")
-    mmole_per_min_l = UnitDefinition("mmole_per_min_l", "mmole/min/liter")
+    mmole_per_l_min = UnitDefinition("mmole_per_l_min", "mmole/liter/min")
     mmole_per_ml = UnitDefinition("mmole_per_ml", "mmole/ml")
     mmole_tg = UnitDefinition("mmole_tg",
                                     f"{mmole_tg_def}")  # mmolTG/l
@@ -67,7 +69,7 @@ class U(Units):
     mmole_tg_per_l_min = UnitDefinition("mmole_tg_per_l_min",
                                         f"{mmole_tg_def}/(liter*min)")  # mmolTG/(l*min)
     nano_iu_insulin = UnitDefinition("nano_iu_insulin",
-                                             f"{micro_iu_insulin_def}/1000")
+                                             f"{nano_iu_insulin_def}")
     per_min = UnitDefinition("per_min", "1/min")
     to_mmole_per_l = UnitDefinition(
         "to_mmole_per_l",

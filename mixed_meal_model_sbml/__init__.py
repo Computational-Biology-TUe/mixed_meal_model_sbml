@@ -11,7 +11,7 @@ MEALMODEL_PATH = Path(__file__).parent
 MODEL_BASE_PATH = MEALMODEL_PATH / "results"
 MODEL_PATH = MODEL_BASE_PATH / "meal_model.xml"
 
-output_parameters = [
+OUTPUT_PARAMETERS = [
     "glucose_plasma_flux",
     "hepatic_glucose_flux",
     "glucose_uptake",
@@ -41,7 +41,7 @@ def create_sbml_model(save_location: Path = MODEL_PATH) -> FactoryResult:
 
 
 def run_simulation(sbml_path: Path, start_time: int, end_time: int,
-                   steps_number: int, outputs: list[str]=output_parameters) -> pd.DataFrame:
+                   steps_number: int, outputs: list[str]=OUTPUT_PARAMETERS) -> pd.DataFrame:
     """Run the simulation of the model.
 
     Args:
