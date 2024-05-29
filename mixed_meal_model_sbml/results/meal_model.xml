@@ -274,9 +274,9 @@ FOR A PARTICULAR PURPOSE.</p></body>
           <unit kind="second" exponent="-1" scale="0" multiplier="60"/>
         </listOfUnits>
       </unitDefinition>
-      <unitDefinition id="nano_iu_insulin" name="34.7*μg/1000">
+      <unitDefinition id="nano_iu_insulin" name="0.0.347*μg">
         <listOfUnits>
-          <unit kind="gram" exponent="1" scale="0" multiplier="3.47e-08"/>
+          <unit kind="gram" exponent="1" scale="0" multiplier="0"/>
         </listOfUnits>
       </unitDefinition>
       <unitDefinition id="per_min" name="1/min">
@@ -313,7 +313,7 @@ FOR A PARTICULAR PURPOSE.</p></body>
           </rdf:RDF>
         </annotation>
       </compartment>
-      <compartment metaid="meta_gut" sboTerm="SBO:0000290" id="gut" name="gut" spatialDimensions="3" size="4" constant="true">
+      <compartment metaid="meta_gut" sboTerm="SBO:0000290" id="gut" name="gut" spatialDimensions="3" size="4" units="litre" constant="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_gut">
@@ -1948,8 +1948,5 @@ FOR A PARTICULAR PURPOSE.</p></body>
         </math>
       </assignmentRule>
     </listOfRules>
-    <comp:listOfPorts>
-      <comp:port metaid="gut_port" sboTerm="SBO:0000599" comp:idRef="gut" comp:id="gut_port" comp:name="Port of gut"/>
-    </comp:listOfPorts>
   </model>
 </sbml>

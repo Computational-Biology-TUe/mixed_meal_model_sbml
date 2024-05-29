@@ -11,12 +11,33 @@ model_upload = html.Div(
     [
         dbc.Row(
             [
-                dcc.Upload(
-                    id=ids.UPLOAD_MODEL,
-                    children=html.Div(["Drag and Drop or ", html.A("Select Files")]),
-                    accept="text/xml",
-                    style=styles.UPLOAD_BUTTON,
+                dbc.Col(
+                    [
+                        dcc.Upload(
+                            id=ids.UPLOAD_MODEL,
+                            children=html.Div(["Drag and Drop or ", html.A("Select Model File")]),
+                            accept="text/xml",
+                            style=styles.UPLOAD_BUTTON,
+                        ),
+                    ]
                 ),
+                dbc.Col(
+                    [
+                        html.Div("OR", style=styles.TEXT_STYLE),
+                    ],
+                    style=styles.COLUMN
+                ),
+                dbc.Col(
+                    [
+                        dbc.Button(
+                            id=ids.CREATE_MODEL_BUTTON,
+                            children=["CREATE MODEL"],
+                            style=styles.MODEL_BUTTON,
+                        ),
+                    ],
+                    style=styles.COLUMN
+                )
+
             ]
         ),
         html.P(),
@@ -60,13 +81,15 @@ model_upload = html.Div(
                                 dbc.Col(
                                     [
                                         html.P("Fasting glucose [mmol]"),
-                                        dbc.Input(id=ids.FASTING_GLUCOSE_INPUT, type="number", min=0),
+                                        dbc.Input(id=ids.FASTING_GLUCOSE_INPUT, type="number",
+                                                  min=0),
                                     ]
                                 ),
                                 dbc.Col(
                                     [
                                         html.P("Fasting insulin [μIU/ml]"),
-                                        dbc.Input(id=ids.FASTING_INSULIN_INPUT, type="number", min=0),
+                                        dbc.Input(id=ids.FASTING_INSULIN_INPUT, type="number",
+                                                  min=0),
                                     ]
                                 ),
                                 dbc.Col(
@@ -103,19 +126,22 @@ model_upload = html.Div(
                                 dbc.Col(
                                     [
                                         html.P("Starting time [s]"),
-                                        dbc.Input(id=ids.START_TIME_INPUT, type="number", min=0, value=0),
+                                        dbc.Input(id=ids.START_TIME_INPUT, type="number", min=0,
+                                                  value=0),
                                     ]
                                 ),
                                 dbc.Col(
                                     [
                                         html.P("Stop time [s]"),
-                                        dbc.Input(id=ids.STOP_TIME_INPUT, type="number", min=0, value=500),
+                                        dbc.Input(id=ids.STOP_TIME_INPUT, type="number", min=0,
+                                                  value=500),
                                     ]
                                 ),
                                 dbc.Col(
                                     [
                                         html.P("Steps number"),
-                                        dbc.Input(id=ids.STEPS_TIME_INPUT, type="number", min=0, value=500),
+                                        dbc.Input(id=ids.STEPS_TIME_INPUT, type="number", min=0,
+                                                  value=500),
                                     ]
                                 ),
                             ]
@@ -129,7 +155,15 @@ model_upload = html.Div(
         html.P(),
         dbc.Row(
             [
-                dbc.Button("RUN SIMULATION", id=ids.RUN_SIMULATION_BUTTON, disabled=True),
+                dbc.Col(
+                    [
+                        dbc.Button("RUN SIMULATION",
+                                   id=ids.RUN_SIMULATION_BUTTON,
+                                   style=styles.MODEL_BUTTON,
+                                   disabled=True),
+                    ],
+                    style=styles.COLUMN
+                )
             ]
         ),
         dcc.Graph(id=ids.RESULTS_PLOTS, style=styles.EMPTY_ELEMENT),

@@ -7,6 +7,7 @@ from dash import Input
 from dash import Output
 from dash import State
 from dash import callback
+from dash import ctx
 from libsbml import Model
 from libsbml import readSBMLFromString
 from plotly.subplots import make_subplots
@@ -29,41 +30,52 @@ model: Model
     Output(ids.MEAL_GLUCOSE_INPUT, "value"),
     Output(ids.MEAL_TG_INPUT, "value"),
     Output(ids.ERROR_MESSAGE, "children"),
+    Output(ids.RESULTS_PLOTS, "style", allow_duplicate=True),
     Input(ids.UPLOAD_MODEL, "contents"),
+    Input(ids.CREATE_MODEL_BUTTON, "n_clicks"),
     prevent_initial_call=True,
 )
-def load_sbml(content):
+def load_sbml(content, btn_click):
     """Callback for file loading."""
     global model_rr
     global model
     run_btn_disabled = hidden_params = True
     bw = fasting_glucose = fasting_insulin = fasting_nefa = fasting_tg = mg = mtg = ""
+    model_raw = None
     msg = ""
 
-    content_type, content_string = content.split(",")
+    trigger = ctx.triggered_id
 
-    if content_type == "data:text/xml;base64":
-        model_raw = base64.b64decode(content_string).decode("utf-8")
+    if trigger == ids.CREATE_MODEL_BUTTON:
+        model_raw = mm.create_sbml_model().model.get_sbml()
+
+    elif trigger == ids.UPLOAD_MODEL:
+
+        content_type, content_string = content.split(",")
+
+        if content_type == "data:text/xml;base64":
+            model_raw = base64.b64decode(content_string).decode("utf-8")
+        else:
+            msg = "Wrong file type"
+
+    try:
         model_rr = roadrunner.RoadRunner(model_raw)
         model = readSBMLFromString(model_raw).getModel()
 
-        try:
-            bw = model_rr["BW"]
-            fasting_glucose = model_rr["fasting_glucose"]
-            fasting_insulin = model_rr["fasting_insulin"]
-            fasting_nefa = model_rr["fasting_NEFA"]
-            fasting_tg = model_rr["fasting_TG"]
-            mg = model_rr["mG"]
-            mtg = model_rr["mTG"]
+        bw = model_rr["BW"]
+        fasting_glucose = model_rr["fasting_glucose"]
+        fasting_insulin = model_rr["fasting_insulin"]
+        fasting_nefa = model_rr["fasting_NEFA"]
+        fasting_tg = model_rr["fasting_TG"]
+        mg = model_rr["mG"]
+        mtg = model_rr["mTG"]
 
-            run_btn_disabled = False
-            hidden_params = False
+        run_btn_disabled = False
+        hidden_params = False
 
-        except Exception:
-            msg = "Wrong model loaded"
-            print(msg)
-    else:
-        msg = "Wrong file type"
+    except Exception:
+        msg = "Wrong model loaded"
+        print(msg)
 
     return (
         run_btn_disabled,
@@ -76,12 +88,13 @@ def load_sbml(content):
         mg,
         mtg,
         msg,
+        styles.EMPTY_ELEMENT
     )
 
 
 @callback(
     Output(ids.RESULTS_PLOTS, "figure"),
-    Output(ids.RESULTS_PLOTS, "style"),
+    Output(ids.RESULTS_PLOTS, "style", allow_duplicate=True),
     Input(ids.RUN_SIMULATION_BUTTON, "n_clicks"),
     State(ids.BODY_MASS_INPUT, "value"),
     State(ids.FASTING_GLUCOSE_INPUT, "value"),
