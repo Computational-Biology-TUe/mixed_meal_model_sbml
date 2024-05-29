@@ -20,27 +20,7 @@ model: Model
 
 @callback(
     Output(ids.RUN_SIMULATION_BUTTON, "disabled"),
-    Input(ids.UPLOAD_MODEL, "contents"),
-    prevent_initial_call=True,
-)
-def load_sbml(content):
-    """Callback for file loading."""
-    global model_rr
-    global model
-    run_btn_disabled = True
-
-    content_type, content_string = content.split(",")
-
-    if content_type == "data:text/xml;base64":
-        model_raw = base64.b64decode(content_string).decode("utf-8")
-        model_rr = roadrunner.RoadRunner(model_raw)
-        model = readSBMLFromString(model_raw).getModel()
-        run_btn_disabled = False
-
-    return run_btn_disabled
-
-
-@callback(
+    Output(ids.PARAMETERS_CONTAINER, "hidden"),
     Output(ids.BODY_MASS_INPUT, "value"),
     Output(ids.FASTING_GLUCOSE_INPUT, "value"),
     Output(ids.FASTING_INSULIN_INPUT, "value"),
@@ -48,19 +28,54 @@ def load_sbml(content):
     Output(ids.FASTING_TG_INPUT, "value"),
     Output(ids.MEAL_GLUCOSE_INPUT, "value"),
     Output(ids.MEAL_TG_INPUT, "value"),
-    Input(ids.RUN_SIMULATION_BUTTON, "disabled"),
+    Output(ids.ERROR_MESSAGE, "children"),
+    Input(ids.UPLOAD_MODEL, "contents"),
     prevent_initial_call=True,
 )
-def populate_params(_):
-    """Callback fo populating the params inputs with the default values found in the model."""
+def load_sbml(content):
+    """Callback for file loading."""
+    global model_rr
+    global model
+    run_btn_disabled = hidden_params = True
+    bw = fasting_glucose = fasting_insulin = fasting_nefa = fasting_tg = mg = mtg = ""
+    msg = ""
+
+    content_type, content_string = content.split(",")
+
+    if content_type == "data:text/xml;base64":
+        model_raw = base64.b64decode(content_string).decode("utf-8")
+        model_rr = roadrunner.RoadRunner(model_raw)
+        model = readSBMLFromString(model_raw).getModel()
+
+        try:
+            bw = model_rr["BW"]
+            fasting_glucose = model_rr["fasting_glucose"]
+            fasting_insulin = model_rr["fasting_insulin"]
+            fasting_nefa = model_rr["fasting_NEFA"]
+            fasting_tg = model_rr["fasting_TG"]
+            mg = model_rr["mG"]
+            mtg = model_rr["mTG"]
+
+            run_btn_disabled = False
+            hidden_params = False
+
+        except Exception:
+            msg = "Wrong model loaded"
+            print(msg)
+    else:
+        msg = "Wrong file type"
+
     return (
-        model_rr["BW"],
-        model_rr["fasting_glucose"],
-        model_rr["fasting_insulin"],
-        model_rr["fasting_NEFA"],
-        model_rr["fasting_TG"],
-        model_rr["mG"],
-        model_rr["mTG"],
+        run_btn_disabled,
+        hidden_params,
+        bw,
+        fasting_glucose,
+        fasting_insulin,
+        fasting_nefa,
+        fasting_tg,
+        mg,
+        mtg,
+        msg,
     )
 
 

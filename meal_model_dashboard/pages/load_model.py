@@ -15,19 +15,12 @@ model_upload = html.Div(
                     id=ids.UPLOAD_MODEL,
                     children=html.Div(["Drag and Drop or ", html.A("Select Files")]),
                     accept="text/xml",
-                    style={
-                        "height": "60px",
-                        "lineHeight": "60px",
-                        "borderWidth": "1px",
-                        "borderStyle": "dashed",
-                        "borderRadius": "5px",
-                        "textAlign": "center",
-                        "margin": "10px",
-                    },
+                    style=styles.UPLOAD_BUTTON,
                 ),
             ]
         ),
         html.P(),
+        html.Div(id=ids.ERROR_MESSAGE),
         dbc.Row(
             [
                 html.Div(
@@ -129,6 +122,7 @@ model_upload = html.Div(
                         ),
                     ],
                     id=ids.PARAMETERS_CONTAINER,
+                    hidden=True,
                 ),
             ]
         ),

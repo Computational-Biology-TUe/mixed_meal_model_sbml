@@ -1,4 +1,5 @@
 BODY_MASS_INPUT = "body-mass-input"
+ERROR_MESSAGE = "error-message"
 FASTING_GLUCOSE_INPUT = "fasting-glucose-input"
 FASTING_INSULIN_INPUT = "fasting-insulin-input"
 FASTING_NEFA_INPUT = "fasting-nefa-input"
