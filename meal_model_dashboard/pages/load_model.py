@@ -125,14 +125,14 @@ model_upload = html.Div(
                             [
                                 dbc.Col(
                                     [
-                                        html.P("Starting time [s]"),
+                                        html.P("Starting time [min]"),
                                         dbc.Input(id=ids.START_TIME_INPUT, type="number", min=0,
                                                   value=0),
                                     ]
                                 ),
                                 dbc.Col(
                                     [
-                                        html.P("Stop time [s]"),
+                                        html.P("Stop time [min]"),
                                         dbc.Input(id=ids.STOP_TIME_INPUT, type="number", min=0,
                                                   value=500),
                                     ]
