@@ -20,7 +20,12 @@ classifiers = [
 ]
 dependencies = [
     "sbmlutils >= 0.8.7",
-    "libroadrunner >= 2.5.0"
+    "libroadrunner >= 2.5.0",
+    "dash >= 2.15.0",
+    "pandas >= 2.2.2",
+    "plotly >= 5.22.0",
+    "dash-bootstrap-components >= 1.6.0",
+    "click"
 ]
 description = "Codebase for generating SBML model of the Mixed Meal Model"
 keywords = [
@@ -45,6 +50,9 @@ publishing = [
     "wheel"
 ]
 
+[project.scripts]
+meal-model = "cli.cli:cli"
+
 [project.urls]
 Repository = "https://github.com/Computational-Biology-TUe/mixed_meal_model_sbml"
 Issues = "https://github.com/Computational-Biology-TUe/mixed_meal_model_sbml/issues"
@@ -68,7 +76,7 @@ line_length = 120
 
 # For completeness, until we move to an src-based layout
 [tool.setuptools.packages.find]
-include = ["mixed_meal_model_sbml*"]
+include = ["mixed_meal_model_sbml*", "meal_model_dashboard*", "cli*"]
 exclude = ["tests*"]
 
 [tool.tox]
