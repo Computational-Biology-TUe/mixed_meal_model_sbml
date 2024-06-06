@@ -50,7 +50,6 @@ def load_sbml(content, btn_click):
         model_raw = mm.create_sbml_model().model.get_sbml()
 
     elif trigger == ids.UPLOAD_MODEL:
-
         content_type, content_string = content.split(",")
 
         if content_type == "data:text/xml;base64":
@@ -88,7 +87,7 @@ def load_sbml(content, btn_click):
         mg,
         mtg,
         msg,
-        styles.EMPTY_ELEMENT
+        styles.EMPTY_ELEMENT,
     )
 
 

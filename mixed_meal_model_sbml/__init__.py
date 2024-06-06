@@ -6,7 +6,7 @@ from sbmlutils.factory import ValidationOptions
 from sbmlutils.factory import create_model
 from . import meal_model
 
-meal_model.Model.model_config['protected_namespaces'] = ()
+meal_model.Model.model_config["protected_namespaces"] = ()
 
 MEALMODEL_PATH = Path(__file__).parent
 

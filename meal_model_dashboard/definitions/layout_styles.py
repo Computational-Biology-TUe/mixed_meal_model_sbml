@@ -12,7 +12,6 @@ TEXT_STYLE = {
     "alignContent": "center",
     "height": "60px",
     "textAlign": "center",
-
 }
 UPLOAD_BUTTON = {
     "height": "60px",

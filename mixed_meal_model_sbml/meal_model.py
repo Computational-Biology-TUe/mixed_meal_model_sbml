@@ -13,7 +13,7 @@ from sbmlutils.metadata import SBO
 from mixed_meal_model_sbml import annotations
 from mixed_meal_model_sbml import templates
 
-Model.model_config['protected_namespaces'] = ()
+Model.model_config["protected_namespaces"] = ()
 
 
 class U(templates.U):
