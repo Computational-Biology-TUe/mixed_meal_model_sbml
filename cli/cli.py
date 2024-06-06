@@ -1,8 +1,13 @@
+import warnings
+
 import click
 
-from mixed_meal_model_sbml import create_sbml_model
-from mixed_meal_model_sbml import run_simulation
-from mixed_meal_model_sbml import MODEL_PATH
+with warnings.catch_warnings():
+    warnings.simplefilter("ignore", category=UserWarning)
+    from mixed_meal_model_sbml import create_sbml_model
+    from mixed_meal_model_sbml import run_simulation
+    from mixed_meal_model_sbml import MODEL_PATH
+
 from meal_model_dashboard.app import app
 
 
