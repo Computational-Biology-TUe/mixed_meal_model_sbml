@@ -22,3 +22,4 @@ UPLOAD_BUTTON = {
     "textAlign": "center",
     "margin": "10px",
 }
+VERSION = {"textAlign": "right"}
