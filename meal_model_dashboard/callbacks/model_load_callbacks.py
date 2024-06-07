@@ -3,7 +3,7 @@ import math
 import pandas as pd
 import plotly.graph_objects as go
 import roadrunner
-from dash import Input
+from dash import Input, dcc
 from dash import Output
 from dash import State
 from dash import callback
@@ -15,6 +15,7 @@ import meal_model_dashboard.definitions.element_ids as ids
 import meal_model_dashboard.definitions.layout_styles as styles
 import mixed_meal_model_sbml as mm
 
+df: pd.DataFrame
 model_rr: roadrunner.RoadRunner
 model: Model
 
@@ -22,6 +23,7 @@ model: Model
 @callback(
     Output(ids.RUN_SIMULATION_BUTTON, "disabled"),
     Output(ids.PARAMETERS_CONTAINER, "hidden"),
+    Output(ids.DOWNLOAD_RESULTS_DIV, "hidden", allow_duplicate=True),
     Output(ids.BODY_MASS_INPUT, "value"),
     Output(ids.FASTING_GLUCOSE_INPUT, "value"),
     Output(ids.FASTING_INSULIN_INPUT, "value"),
@@ -39,7 +41,7 @@ def load_sbml(content, btn_click):
     """Callback for file loading."""
     global model_rr
     global model
-    run_btn_disabled = hidden_params = True
+    run_btn_disabled = hidden_params = hidden_download = True
     bw = fasting_glucose = fasting_insulin = fasting_nefa = fasting_tg = mg = mtg = ""
     model_raw = None
     msg = ""
@@ -69,8 +71,7 @@ def load_sbml(content, btn_click):
         mg = model_rr["mG"]
         mtg = model_rr["mTG"]
 
-        run_btn_disabled = False
-        hidden_params = False
+        run_btn_disabled = hidden_params = False
 
     except Exception:
         msg = "Wrong model loaded"
@@ -79,6 +80,7 @@ def load_sbml(content, btn_click):
     return (
         run_btn_disabled,
         hidden_params,
+        hidden_download,
         bw,
         fasting_glucose,
         fasting_insulin,
@@ -94,6 +96,7 @@ def load_sbml(content, btn_click):
 @callback(
     Output(ids.RESULTS_PLOTS, "figure"),
     Output(ids.RESULTS_PLOTS, "style", allow_duplicate=True),
+    Output(ids.DOWNLOAD_RESULTS_DIV, "hidden", allow_duplicate=True),
     Input(ids.RUN_SIMULATION_BUTTON, "n_clicks"),
     State(ids.BODY_MASS_INPUT, "value"),
     State(ids.FASTING_GLUCOSE_INPUT, "value"),
@@ -122,6 +125,7 @@ def run_simulation(
 ):
     """Run the simulation using the set parameters."""
     global model_rr
+    global df
 
     model_rr["BW"] = body_mass
     model_rr["fasting_glucose"] = fasting_glucose
@@ -137,7 +141,16 @@ def run_simulation(
 
     fig = plot_results(df, model)
 
-    return fig, styles.GRAPH
+    return fig, styles.GRAPH, False
+
+
+@callback(Output(ids.DOWNLOAD_RESULTS, "data"),
+          Input(ids.DOWNLOAD_RESULTS_BUTTON, "n_clicks"),
+          prevent_initial_call=True)
+def download_data(_):
+    results_file = dcc.send_data_frame(df.to_csv, 'simulation_results.csv')
+
+    return results_file
 
 
 def plot_results(df: pd.DataFrame, model_sbml: Model) -> go.Figure:

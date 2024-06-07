@@ -1,5 +1,8 @@
 BODY_MASS_INPUT = "body-mass-input"
 CREATE_MODEL_BUTTON = "create-model-button"
+DOWNLOAD_RESULTS = "download-results"
+DOWNLOAD_RESULTS_BUTTON = "download-results-button"
+DOWNLOAD_RESULTS_DIV = "download-results-div"
 ERROR_MESSAGE = "error-message"
 FASTING_GLUCOSE_INPUT = "fasting-glucose-input"
 FASTING_INSULIN_INPUT = "fasting-insulin-input"

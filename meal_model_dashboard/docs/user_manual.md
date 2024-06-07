@@ -42,3 +42,13 @@ The simulation results will be displayed as shown here below.
 <kbd>
 <img src=images/simulation_results.png width="1200px">
 </kbd>
+
+## Dowloading the results
+
+It's possible to download the simulation results by clocking on the `DOWNLOAD` button at the bottom of the page.
+
+<kbd>
+<img src=images/download_results.png width="1200px">
+</kbd>
+
+A .csv file containing the DataFrame with the results of the simulation will be downloaded.
