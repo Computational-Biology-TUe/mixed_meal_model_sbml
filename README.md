@@ -134,7 +134,7 @@ It is possible to easily run the dashboard using the CLI:
 meal-model run-dashboard
 ```
 
-A URL, typically http://127.0.0.1:8050/, will be printed, where the dashboard can be accessed.
+A URL will be printed, where the dashboard can be accessed.
 
 It is also possible to run the dashboard by running the following command from the `mixed_meal_model_dashboard` folder:
 
@@ -144,7 +144,7 @@ python main.py
 
 And following the printed URL.
 
-
+The instructions on how to use the dashboard are reported in the [user manual](./meal_model_dashboard/docs/user_manual.md).
 
 ## Contributing
 
