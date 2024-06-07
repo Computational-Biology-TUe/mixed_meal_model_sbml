@@ -1,11 +1,10 @@
+from importlib.metadata import version
+import dash_bootstrap_components as dbc
 from dash import html
 from dash import page_container
-from importlib.metadata import version
 from meal_model_dashboard.app import app
 from meal_model_dashboard.callbacks import model_load_callbacks  # noqa: F401
 from meal_model_dashboard.definitions import layout_styles as styles
-
-import dash_bootstrap_components as dbc
 
 app.layout = html.Div(
     [
@@ -19,17 +18,9 @@ app.layout = html.Div(
                         ),
                     ]
                 ),
-                dbc.Row(
-                    [
-
-                        html.Div(f"Version {version('mixed_meal_model_sbml')}",
-                                 style=styles.VERSION)
-                    ]
-                )
+                dbc.Row([html.Div(f"Version {version('mixed_meal_model_sbml')}", style=styles.VERSION)]),
             ]
-        )
-        ,
-
+        ),
         page_container,
     ],
 )

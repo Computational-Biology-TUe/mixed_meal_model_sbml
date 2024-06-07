@@ -80,15 +80,13 @@ model_upload = html.Div(
                                 dbc.Col(
                                     [
                                         html.P("Fasting glucose [mmol]"),
-                                        dbc.Input(id=ids.FASTING_GLUCOSE_INPUT, type="number",
-                                                  min=0),
+                                        dbc.Input(id=ids.FASTING_GLUCOSE_INPUT, type="number", min=0),
                                     ]
                                 ),
                                 dbc.Col(
                                     [
                                         html.P("Fasting insulin [μIU/ml]"),
-                                        dbc.Input(id=ids.FASTING_INSULIN_INPUT, type="number",
-                                                  min=0),
+                                        dbc.Input(id=ids.FASTING_INSULIN_INPUT, type="number", min=0),
                                     ]
                                 ),
                                 dbc.Col(
@@ -125,22 +123,19 @@ model_upload = html.Div(
                                 dbc.Col(
                                     [
                                         html.P("Starting time [min]"),
-                                        dbc.Input(id=ids.START_TIME_INPUT, type="number", min=0,
-                                                  value=0),
+                                        dbc.Input(id=ids.START_TIME_INPUT, type="number", min=0, value=0),
                                     ]
                                 ),
                                 dbc.Col(
                                     [
                                         html.P("Stop time [min]"),
-                                        dbc.Input(id=ids.STOP_TIME_INPUT, type="number", min=0,
-                                                  value=500),
+                                        dbc.Input(id=ids.STOP_TIME_INPUT, type="number", min=0, value=500),
                                     ]
                                 ),
                                 dbc.Col(
                                     [
                                         html.P("Steps number"),
-                                        dbc.Input(id=ids.STEPS_TIME_INPUT, type="number", min=0,
-                                                  value=500),
+                                        dbc.Input(id=ids.STEPS_TIME_INPUT, type="number", min=0, value=500),
                                     ]
                                 ),
                             ]
@@ -157,8 +152,7 @@ model_upload = html.Div(
                 dbc.Col(
                     [
                         dbc.Button(
-                            "RUN SIMULATION", id=ids.RUN_SIMULATION_BUTTON,
-                            style=styles.MODEL_BUTTON, disabled=True
+                            "RUN SIMULATION", id=ids.RUN_SIMULATION_BUTTON, style=styles.MODEL_BUTTON, disabled=True
                         ),
                     ],
                     style=styles.COLUMN,
@@ -175,13 +169,12 @@ model_upload = html.Div(
                         html.Div(
                             [
                                 dbc.Button(
-                                    "DOWNLOAD RESULTS", id=ids.DOWNLOAD_RESULTS_BUTTON,
-                                    style=styles.MODEL_BUTTON
+                                    "DOWNLOAD RESULTS", id=ids.DOWNLOAD_RESULTS_BUTTON, style=styles.MODEL_BUTTON
                                 ),
                                 dcc.Download(id=ids.DOWNLOAD_RESULTS),
                             ],
                             id=ids.DOWNLOAD_RESULTS_DIV,
-                            hidden=True
+                            hidden=True,
                         ),
                     ],
                     style=styles.COLUMN,

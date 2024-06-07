@@ -3,11 +3,12 @@ import math
 import pandas as pd
 import plotly.graph_objects as go
 import roadrunner
-from dash import Input, dcc
+from dash import Input
 from dash import Output
 from dash import State
 from dash import callback
 from dash import ctx
+from dash import dcc
 from libsbml import Model
 from libsbml import readSBMLFromString
 from plotly.subplots import make_subplots
@@ -144,11 +145,12 @@ def run_simulation(
     return fig, styles.GRAPH, False
 
 
-@callback(Output(ids.DOWNLOAD_RESULTS, "data"),
-          Input(ids.DOWNLOAD_RESULTS_BUTTON, "n_clicks"),
-          prevent_initial_call=True)
+@callback(
+    Output(ids.DOWNLOAD_RESULTS, "data"), Input(ids.DOWNLOAD_RESULTS_BUTTON, "n_clicks"), prevent_initial_call=True
+)
 def download_data(_):
-    results_file = dcc.send_data_frame(df.to_csv, 'simulation_results.csv')
+    """Download the results of the simulation."""
+    results_file = dcc.send_data_frame(df.to_csv, "simulation_results.csv")
 
     return results_file
 

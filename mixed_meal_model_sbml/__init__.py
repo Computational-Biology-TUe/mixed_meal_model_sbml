@@ -2,7 +2,8 @@ import warnings
 from pathlib import Path
 import pandas as pd
 import roadrunner
-from sbmlutils.factory import FactoryResult, Model
+from sbmlutils.factory import FactoryResult
+from sbmlutils.factory import Model
 from sbmlutils.factory import ValidationOptions
 from sbmlutils.factory import create_model
 from . import meal_model
@@ -26,15 +27,7 @@ OUTPUT_PARAMETERS = [
     "[nefa_plasma]",
 ]
 
-SETTABLE_PARAMETERS = [
-    "BW",
-    "fasting_glucose",
-    "fasting_insulin",
-    "fasting_NEFA",
-    "fasting_TG",
-    "mG",
-    "mTG"
-]
+SETTABLE_PARAMETERS = ["BW", "fasting_glucose", "fasting_insulin", "fasting_NEFA", "fasting_TG", "mG", "mTG"]
 
 
 def create_sbml_model(save_location: Path = MODEL_PATH) -> FactoryResult:
@@ -55,9 +48,12 @@ def create_sbml_model(save_location: Path = MODEL_PATH) -> FactoryResult:
 
 
 def run_simulation(
-        sbml: Path | Model, start_time: int, end_time: int, steps_number: int,
-        outputs: list[str] = OUTPUT_PARAMETERS,
-        **kwargs
+    sbml: Path | Model,
+    start_time: int,
+    end_time: int,
+    steps_number: int,
+    outputs: list[str] = OUTPUT_PARAMETERS,
+    **kwargs,
 ) -> pd.DataFrame:
     """Run the simulation of the model.
 
@@ -74,7 +70,6 @@ def run_simulation(
         dataframe containing the simulation results
 
     """
-
     if isinstance(sbml, Model):
         with warnings.catch_warnings():
             warnings.simplefilter("ignore", category=UserWarning)
@@ -90,8 +85,7 @@ def run_simulation(
             except (TypeError, RuntimeError) as e:
                 raise e
         else:
-            raise Warning(
-                f"The parameter {key} is not part of the settable parameters in the model")
+            raise Warning(f"The parameter {key} is not part of the settable parameters in the model")
 
     _s = r.simulate(start=start_time, end=end_time, steps=steps_number, selections=outputs)
     s_out = pd.DataFrame(_s, columns=_s.colnames)
