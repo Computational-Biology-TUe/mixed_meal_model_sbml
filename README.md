@@ -105,7 +105,7 @@ import mixed_meal_model_sbml
 
 model_path = "my_path/meal_model.xml"
 
-results = mixed_meal_model_sbml.run_simulation(sbml_path=model_path,
+results = mixed_meal_model_sbml.run_simulation(sbml=model_path,
                                                start_time=0,
                                                end_time=500,
                                                steps_number=500)
@@ -114,6 +114,26 @@ results = mixed_meal_model_sbml.run_simulation(sbml_path=model_path,
 This code will run a simulation of the model from time 0 to time 500 using 500 steps. 
 The results are returned as a Pandas DataFrame containing the values of the species 
 calculated at each time step.
+
+It is possible to set the model parameters, if different values from the default ones have to be used.
+The parameters are defined in the `SETTABLE_PARAMETERS` and are the following: 
+`BW`, `fasting_glucose`,`fasting_insulin`, `fasting_NEFA`, `fasting_TG`, `mG`, `mTG`
+
+All of part of the parameters can be set as shown here below:
+
+```python
+import mixed_meal_model_sbml
+
+model_path = "my_path/meal_model.xml"
+
+results = mixed_meal_model_sbml.run_simulation(sbml=model_path,
+                                               start_time=0,
+                                               end_time=500,
+                                               steps_number=500,
+                                               BW=75,
+                                               fasting_insulin=7,
+                                               mTG=2.5)
+```
 
 #### Code structure
 
