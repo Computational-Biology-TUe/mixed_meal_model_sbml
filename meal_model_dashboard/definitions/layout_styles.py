@@ -1,25 +1,32 @@
 COLUMN = {"textAlign": "center"}
 EMPTY_ELEMENT = {"display": "none"}
-GRAPH = {}
-MAIN_TITLE_STYLE = {"textAlign": "center"}
+GRAPH = {"marginTop": "1.5rem"}
+MAIN_TITLE_STYLE = {"textAlign": "center", "marginBottom": "0.25rem"}
 MODEL_BUTTON = {
-    "height": "60px",
-    "borderRadius": "5px",
+    "minHeight": "48px",
+    "borderRadius": "10px",
     "textAlign": "center",
-    "margin": "10px",
+    "margin": "0.25rem 0",
+    "fontWeight": "600",
 }
 TEXT_STYLE = {
     "alignContent": "center",
-    "height": "60px",
+    "minHeight": "48px",
     "textAlign": "center",
+    "fontWeight": "600",
+    "color": "#5A6475",
 }
 UPLOAD_BUTTON = {
-    "height": "60px",
-    "lineHeight": "60px",
-    "borderWidth": "1px",
+    "minHeight": "120px",
+    "lineHeight": "120px",
+    "borderWidth": "2px",
     "borderStyle": "dashed",
-    "borderRadius": "5px",
+    "borderRadius": "10px",
     "textAlign": "center",
-    "margin": "10px",
+    "margin": "0.25rem 0",
+    "backgroundColor": "#F8FAFF",
+    "borderColor": "#98A9CC",
+    "color": "#1F2A44",
+    "fontWeight": "600",
 }
-VERSION = {"textAlign": "right"}
+VERSION = {"textAlign": "right", "color": "#5A6475", "fontSize": "0.95rem"}

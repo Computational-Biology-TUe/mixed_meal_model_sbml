@@ -2,7 +2,7 @@ import dash_bootstrap_components as dbc
 from dash import Dash
 
 FONT_AWESOME = "https://use.fontawesome.com/releases/v5.13.0/css/all.css"
-external_stylesheets = [dbc.themes.BOOTSTRAP, FONT_AWESOME]
+external_stylesheets = [dbc.themes.LUX, FONT_AWESOME]
 app = Dash(
     __name__,
     use_pages=True,

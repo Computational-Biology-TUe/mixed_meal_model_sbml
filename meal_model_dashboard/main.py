@@ -8,21 +8,38 @@ from meal_model_dashboard.definitions import layout_styles as styles
 
 app.layout = html.Div(
     [
-        dbc.Col(
+        dbc.Container(
             [
                 dbc.Row(
                     [
-                        html.H1(
-                            children="MixedMealModel dashboard",
-                            style=styles.MAIN_TITLE_STYLE,
+                        dbc.Col(
+                            [
+                                html.H1("MixedMealModel Studio", style=styles.MAIN_TITLE_STYLE),
+                                html.P(
+                                    (
+                                        "Professional dashboard for loading, configuring, and simulating "
+                                        "postprandial metabolic dynamics."
+                                    ),
+                                    className="text-center text-muted mb-1",
+                                ),
+                            ],
+                            lg=8,
                         ),
-                    ]
+                        dbc.Col(
+                            [html.Div(f"Version {version('mixed_meal_model_sbml')}", style=styles.VERSION)],
+                            lg=4,
+                            className="d-flex align-items-center justify-content-lg-end justify-content-center",
+                        ),
+                    ],
+                    className="py-4 border-bottom",
                 ),
-                dbc.Row([html.Div(f"Version {version('mixed_meal_model_sbml')}", style=styles.VERSION)]),
-            ]
-        ),
-        page_container,
+                dbc.Row([dbc.Col(page_container)]),
+            ],
+            fluid="lg",
+            className="pb-4",
+        )
     ],
+    className="bg-light min-vh-100",
 )
 
 if __name__ == "__main__":
